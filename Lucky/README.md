@@ -66,10 +66,12 @@ Tiếp theo:
 cmp     bl, 38h ; '8'
 jnz     sub_8049000
 ```
-Chương trình sẽ so sánh chữ số thứ 2 với chữ số `8`. Một lưu ý nho nhỏ là chữ số thứ 2 này, sau khi được trừ `0x30` đã được cộng lại `0x30` nên ở câu lệnh này, chúng ta đang so sánh giá trị ban đầu của chữ số thứ 2.  
+Chương trình sẽ so sánh chữ số thứ 2 với chữ số `8`, nếu không bằng `8` thì chương trình sẽ in ra ***Sorry :((***.  
+Một lưu ý nho nhỏ là chữ số thứ 2 này, sau khi được trừ `0x30` đã được cộng lại `0x30` nên ở câu lệnh này, chúng ta đang so sánh giá trị ban đầu của chữ số thứ 2.  
+
 Vậy chữ số thứ 2 là `8`.  
-Từ đó chúng ta tính chữ số thứ nhất `daa((so1 - 0x30) + 0x8) = 0x16`. Từ lý thuyết về ***packed BCD*** ở trên, thì giá trị `so1` cần tìm là `8` vì
+Từ đó chúng ta tính chữ số thứ nhất `daa((so1 - 0x30) + 0x8) = 0x16`. Theo video [này](https://youtu.be/QssoFyDCAYo), thì giá trị `so1` cần tìm là `8` vì
 ```
-daa(0x8 + 0x8) = daa(0xf)
+daa((0x38 - 0x30) + 0x8) = daa(0x8 + 0x8) = daa(0xf)
 ```
 Mà `0xf = 16` và lớn hơn `10` nên kết quả cuối cùng sẽ bằng `0xf + 0x6 = 0x16`.
