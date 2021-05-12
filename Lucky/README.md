@@ -75,3 +75,12 @@ Từ đó chúng ta tính chữ số thứ nhất `daa((so1 - 0x30) + 0x8) = 0x1
 daa((0x38 - 0x30) + 0x8) = daa(0x8 + 0x8) = daa(0xf)
 ```
 Mà `0xf = 16` và lớn hơn `10` nên kết quả cuối cùng sẽ bằng `0xf + 0x6 = 0x16`.
+
+> Vậy giá trị cần tìm là 88.
+
+## Kiểm tra kết quả
+```
+└─$ ./lucky_nb
+Lucky Numbers: 88
+Good Job !
+```
