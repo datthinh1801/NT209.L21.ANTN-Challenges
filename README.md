@@ -1,11 +1,11 @@
 # NT209.L21.ANTN-Challenges Series 1
 
-| time | challenge |
+| solving time | challenge |
 |------|-----|
 | 2m |[nasm](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/nasm)|
 | 2m |[crack_nasm](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/crack_nasm)|
 | 5m |[es crack](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Es%20crack)| 
-| |[lucky](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Lucky)|
+| 2h |[lucky](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Lucky)|
 | |[hello](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/hello)|
 | |[get_the_password](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/get_the_password)|
 | |[keygen](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/keygen)|
