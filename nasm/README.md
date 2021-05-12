@@ -25,4 +25,4 @@ Em tiến hành test thử chuỗi này.
 Enter your password: supersecret
 Correct!
 ```
-Chính xác! Vậy password là `supersecret`.
+> Chính xác! Vậy password là `supersecret`.
