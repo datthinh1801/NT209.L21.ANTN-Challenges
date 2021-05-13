@@ -122,7 +122,7 @@ int alter_v0()
 Vậy để `(group_of_4_letters_from_serial & 0xFF000000) != 0` thì `serial` của chúng ta phải là 1 chuỗi 12 ký tự để khi việc so sánh này diễn ra thì chúng ta luôn có byte thứ 4 khác `00` và dẫn đến kết quả của phép `AND` khác 0.
 
 Sau khi làm cho `v0 == 3`, chúng ta tiếp tục phân tích hàm `process_username()`.
-```
+```c
 int process_username()
 {
   _BYTE *v0; // edi
