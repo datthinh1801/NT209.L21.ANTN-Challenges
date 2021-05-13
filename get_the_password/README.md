@@ -185,7 +185,7 @@ Có một điều đặc biệt là khi `v0` không thuộc `[2, 9]` thì các c
 ```c
 s[0] > 'G'  => chọn 'Z'
 s[1] < 'm'  => chọn 'a'
-s[2] == 'V' => 'V'
+s[2] == 'V' => chọn 'V'
 s[3] >= 'f' => chọn 'f'
 s[4] <= '3' => chọn '3'
 s[5] > 'y'  => chọn 'z'
