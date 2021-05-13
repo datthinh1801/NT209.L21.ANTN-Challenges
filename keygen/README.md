@@ -147,9 +147,8 @@ int process_username()
     --v1;
   }
   while ( !v2 );
-
-
   v3 = -(char)v1 - 2;
+  
   v4 = 0;
   username_iterator = (unsigned __int8 *)&username;
   do
@@ -160,10 +159,12 @@ int process_username()
     --v3;
   }
   while ( v3 );
+  
   v7 = ~(v4 ^ 0x13131313) ^ 0x1234ABCD;
   result = v7 & 0xF0F0F0F;
   dword_4020A0 = v7 & 0xF0F0F0F;
   dword_4020A4 = (v7 & 0xF0F0F0F0) >> 4;
+  
   v9 = &dword_4020A0;
   v10 = 8;
   do
@@ -176,6 +177,45 @@ int process_username()
     --v10;
   }
   while ( v10 );
+  
+  return result;
+}
+```
+### Phân tích từng đoạn lệnh
+```c
+v0 = &username;
+v1 = 255;
+do
+{
+  if ( !v1 )
+    break;
+  v2 = *v0++ == 0;
+  --v1;
+}
+while ( !v2 );
+v3 = -(char)v1 - 2;
+```
+
+Đoạn lệnh này sẽ tính độ dài của chuỗi `username` và lưu vào `v3`.
+> Không tính ký tự `NULL`.  
+
+Phân tích hàm `last_check_and_print_success()`.
+```c
+int last_check_and_print_success()
+{
+  int result; // eax
+
+  if ( dword_402053 == dword_4020A0
+    && *(_DWORD *)((char *)&dword_402053 + 5) == *(&dword_4020A0 + 1)
+    && byte_402052 == 45
+    && byte_402057 == 45 )
+  {
+    result = printf("\nSerial is correct, now make a keygen.\n");
+  }
+  else
+  {
+    result = printf("\nIncorrect serial !!!\n");
+  }
   return result;
 }
 ```
