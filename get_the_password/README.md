@@ -119,6 +119,7 @@ while ( 1 )
 
 Đầu tiên, vòng lặp `while` này sẽ `break` khi `v0 != 1` hoặc khi `v3 == 13` (vì khi đó chương trình sẽ nhảy tới 1 block lệnh khác).  
 Vì giá trị khởi tạo của `v0 = 0` nên khi bắt đầu chương trình, vòng lặp này sẽ lặp `2` lần, và ở những lần lặp sau đó (của vòng lặp `while` lớn), vòng lặp `while` nhỏ chỉ thực thi 1 lần.  
+Sau mỗi lần lặp `v2` sẽ tăng 1 đơn vị tương đương với việc truy xuất ký tự tiếp theo của `password` mà ta vừa nhập.  
 
 Tiếp theo, ở câu lệnh `switch`.  
 ```cc
@@ -178,7 +179,7 @@ LABEL_32:
 
 Ở câu lệnh `switch` này, ở các case, `v1` đều được cộng 1 nhưng sẽ bị trừ đi 1 nếu thỏa điều kiện tương ứng của từng case (*như đã ghi chú ở trên*).  
 Có một điều đặc biệt là khi `v0` không thuộc `[2, 9]` thì các câu lệnh ở `LABEL_32` sẽ được thực thi. Các câu lệnh này sẽ kiểm tra `v1 == 10`, nếu đúng thì sẽ thành công.
-> Vậy việc cần làm là nhập 1 `password` có độ dài là `10` và mỗi ký tự này đều không thỏa các điều kiện mà sẽ dẫn đến việc `--v1`.  
+> Vậy việc cần làm là nhập 1 `password` có độ dài là `10` vì khi xét đến ký tự thứ 10, `v1` sẽ bằng 10 và block lệnh `default` sẽ được thực thi. Đồng thời mỗi ký tự này đều không thỏa các điều kiện mà sẽ dẫn đến việc `--v1`.  
 
 ### Tổng hợp phân tích
 ```c
