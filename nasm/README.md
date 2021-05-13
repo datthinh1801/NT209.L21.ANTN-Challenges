@@ -19,7 +19,8 @@ Từ kết quả trên, em mở IDA Pro 64bit để phân tích chương trình.
 ![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/nasm/nasm_secret.png)  
 
 `supersecret` ? Có vẻ đây là password mà ta cần tìm.  
-Em tiến hành test thử chuỗi này.  
+
+## Kiểm tra kết quả
 ```
 └─$ ./nasm
 Enter your password: supersecret
