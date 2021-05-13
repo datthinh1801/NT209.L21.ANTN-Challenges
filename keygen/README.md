@@ -181,25 +181,9 @@ int process_username()
   return result;
 }
 ```
-### Phân tích từng đoạn lệnh
-```c
-v0 = &username;
-v1 = 255;
-do
-{
-  if ( !v1 )
-    break;
-  v2 = *v0++ == 0;
-  --v1;
-}
-while ( !v2 );
-v3 = -(char)v1 - 2;
-```
+> Nhìn chung, hàm này sẽ một số việc tính toán nào đó và lưu một số giá trị vào 2 ô nhớ tại `dword_4020A0` và `dword_4020A0 + `.  
 
-Đoạn lệnh này sẽ tính độ dài của chuỗi `username` và lưu vào `v3`.
-> Không tính ký tự `NULL`.  
-
-Phân tích hàm `last_check_and_print_success()`.
+Tiếp theo, chúng ta sẽ phân tích hàm `last_check_and_print_success()`.
 ```c
 int last_check_and_print_success()
 {
@@ -218,4 +202,24 @@ int last_check_and_print_success()
   }
   return result;
 }
+```  
+
+Ở hàm này, nếu 4 bytes tại `dword_402053` bằng với 4 bytes tại `dword_4020A0` **VÀ** 4 bytes tại `dword_402053 + 5` bằng 4 bytes tại `dword_4020A0 + 1` **VÀ** byte tại `byte_402052 == '-'` **VÀ** `byte_402057 == '-'`.  
+Khi xem địa chỉ của `serial`, chúng ta phát hiện ra rằng, `byte_402050` là địa chỉ bắt đầu của `serial`. Vậy `dword_402053` sẽ là địa chỉ của ký tự thứ 4, 5, 6, 7 của `serial`; `dword_402053 + 5` sẽ là địa chỉ của các ký tự thứ 9, 10, 11, 12; và `byte_402052`và `byte_402057` là các ký tự thứ 3 và 8.  
+
+Từ điều kiện trên, khi em nhập `username` là `abcd`, giá trị tại `dword_4020A0` là `E845` và giá trị tại `dword_4020A0 + 1` là `FD4F`. Nhưng vì chuỗi chúng ta nhập vào sẽ được lưu ở dạng ***little endian***, nên chúng ta sẽ nhập các ký tự này theo thứ tự ngược lại.  
+> Vậy `serial` cho `username = abcd` là `12-548E-F4DF` (với 2 ký tự đầu tiên bất kỳ).  
+
+## Kiểm tra kết quả
+```
+└─$ ./Keygenme#1.exe
+*******************************************
+* Keygenme 1.0 Created by BlZbB           *
+*******************************************
+
+
+Enter Username : abcd
+Enter Serial : 12-548E-F4DF
+
+Serial is correct, now make a keygen.
 ```
