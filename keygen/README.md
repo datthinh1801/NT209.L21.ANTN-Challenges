@@ -205,9 +205,10 @@ int last_check_and_print_success()
 ```  
 
 Ở hàm này, nếu 4 bytes tại `dword_402053` bằng với 4 bytes tại `dword_4020A0` **VÀ** 4 bytes tại `dword_402053 + 5` bằng 4 bytes tại `dword_4020A0 + 1` **VÀ** byte tại `byte_402052 == '-'` **VÀ** `byte_402057 == '-'`, thì chương trình sẽ in ra câu chúc mừng.  
+
 Khi xem địa chỉ của `serial`, chúng ta phát hiện ra rằng, `byte_402050` là địa chỉ bắt đầu của `serial`. Vậy `dword_402053` sẽ là địa chỉ của ký tự thứ 4, 5, 6, 7 của `serial`; `dword_402053 + 5` sẽ là địa chỉ của các ký tự thứ 9, 10, 11, 12; và `byte_402052`và `byte_402057` là các ký tự thứ 3 và 8.  
 
-Từ điều kiện trên, khi em nhập `username` là `abcd`, giá trị tại `dword_4020A0` là `E845` và giá trị tại `dword_4020A0 + 1` là `FD4F`. Nhưng vì chuỗi chúng ta nhập vào sẽ được lưu ở dạng ***little endian***, nên chúng ta sẽ nhập các ký tự này theo thứ tự ngược lại.  
+Từ điều kiện trên, khi ta nhập `username` là `abcd`, giá trị tại `dword_4020A0` là `E845` và giá trị tại `dword_4020A0 + 1` là `FD4F`. Nhưng vì chuỗi chúng ta nhập vào sẽ được lưu ở dạng ***little endian***, nên chúng ta sẽ nhập các ký tự này theo thứ tự ngược lại.  
 > Vậy `serial` cho `username = abcd` là `12-548E-F4DF` (với 2 ký tự đầu tiên bất kỳ).  
 
 ## Kiểm tra kết quả
