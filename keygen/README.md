@@ -181,7 +181,7 @@ int process_username()
   return result;
 }
 ```
-> Nhìn chung, hàm này sẽ một số việc tính toán nào đó và lưu một số giá trị vào 2 ô nhớ tại `dword_4020A0` và `dword_4020A0 + `.  
+> Nhìn chung, hàm này sẽ một số việc tính toán nào đó và lưu một số giá trị vào 2 ô nhớ tại `dword_4020A0` và `dword_4020A0 + 1`.  
 
 Tiếp theo, chúng ta sẽ phân tích hàm `last_check_and_print_success()`.
 ```c
