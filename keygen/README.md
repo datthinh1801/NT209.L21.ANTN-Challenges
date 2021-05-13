@@ -120,3 +120,62 @@ int alter_v0()
 
 Ở đây, ta thấy được là `v1` sẽ được cộng 1 vào byte thấp khi `(group_of_4_letters_from_serial & 0xFF000000) != 0`. Sau khoảng 30p debug thì em biết được là chương trình này sẽ lưu theo dạng **little endian**, nghĩa là khi chúng ta nhập `abcd`, thì giá trị được lưu sẽ là `dcba`.  
 Vậy để `(group_of_4_letters_from_serial & 0xFF000000) != 0` thì `serial` của chúng ta phải là 1 chuỗi 12 ký tự để khi việc so sánh này diễn ra thì chúng ta luôn có byte thứ 4 khác `00` và dẫn đến kết quả của phép `AND` khác 0.
+
+Sau khi làm cho `v0 == 3`, chúng ta tiếp tục phân tích hàm `process_username()`.
+```
+int process_username()
+{
+  _BYTE *v0; // edi
+  int v1; // ecx
+  bool v2; // zf
+  unsigned __int8 v3; // cl
+  int v4; // ebx
+  unsigned __int8 *username_iterator; // esi
+  unsigned __int8 cur_username_letter; // al
+  int v7; // ebx
+  int result; // eax
+  int *v9; // esi
+  int v10; // ecx
+
+  v0 = &username;
+  v1 = 255;
+  do
+  {
+    if ( !v1 )
+      break;
+    v2 = *v0++ == 0;
+    --v1;
+  }
+  while ( !v2 );
+
+
+  v3 = -(char)v1 - 2;
+  v4 = 0;
+  username_iterator = (unsigned __int8 *)&username;
+  do
+  {
+    cur_username_letter = *username_iterator++;
+    v4 += (unsigned __int16)(v3 * cur_username_letter);
+    ++v0;
+    --v3;
+  }
+  while ( v3 );
+  v7 = ~(v4 ^ 0x13131313) ^ 0x1234ABCD;
+  result = v7 & 0xF0F0F0F;
+  dword_4020A0 = v7 & 0xF0F0F0F;
+  dword_4020A4 = (v7 & 0xF0F0F0F0) >> 4;
+  v9 = &dword_4020A0;
+  v10 = 8;
+  do
+  {
+    if ( *(_BYTE *)v9 > 9u )
+      *(_BYTE *)v9 += 55;
+    else
+      *(_BYTE *)v9 |= 0x30u;
+    v9 = (int *)((char *)v9 + 1);
+    --v10;
+  }
+  while ( v10 );
+  return result;
+}
+```
