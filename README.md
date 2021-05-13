@@ -7,7 +7,7 @@
 | 5m |[es crack](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Es%20crack)| 
 | 1h |[lucky](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Lucky)|
 | 40m |[hello](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/hello)|
-| |[get_the_password](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/get_the_password)|
+| 1h |[get_the_password](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/get_the_password)|
 | |[keygen](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/keygen)|
 | |[crack_001](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/crack_001)|
 | |[S_Crackme1](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/S_Crackme1)|
