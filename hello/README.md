@@ -47,7 +47,7 @@ Tiếp theo:
 0x4010c3 <_start.l1+7>     mov    al, byte ptr [r14 + 0x402094]
 ```
 Giá trị tại vùng nhớ `[r14 + 0x402094]` sẽ được gán vào `al`.  
-Khi xem giá trị được lưu tại `0x402094`, ta có thể thấy được đây là địa chỉ của chuỗi `"Hello "` cộng với `name` mà ta đã nhập. Vậy giá trị được gán vào `al` sẽ là ký tự thứ `5 + len(password)` (trong trường hợp là ký tự `h` cuối cùng).
+Khi xem giá trị được lưu tại `0x402094`, ta có thể thấy được đây là địa chỉ của chuỗi `"Hello "` cộng với `name` mà ta đã nhập. Vậy giá trị được gán vào `al` sẽ là ký tự thứ `5 + len(password)` (trong trường hợp này là ký tự `h` cuối cùng).
 ```
 pwndbg> x/10sb 0x402094
 0x402094:       "Hello thinh\n"
@@ -77,9 +77,9 @@ Khi thỏa điều kiện trên, các câu lệnh tiếp theo sẽ được th�
 0x4010d8 <_start.l1+28>    jne    _start.l1 <_start.l1>
 ```
 `r15` sẽ giảm đi 1, và được so sánh xem `r15` có bằng 0 hay không. Điều này tương đương với đoạn pseudocode sau:
-```
+```python
 for i from len(password) to 0:
-    if welcome[i + 5] + 5 != pass[i]:
+    if welcome[i + 5] + 5 != password[i]:
         goto wrong
 ```
 
