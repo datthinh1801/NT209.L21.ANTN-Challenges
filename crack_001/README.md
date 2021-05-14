@@ -123,10 +123,11 @@ int sub_4010FE()
 
 Có thể thấy được là hàm này sẽ thực hiện một số việc kiểm tra và tính toán trước khi in kết quả ra màn hình với message tương ứng với việc `register` thành công hay thất bại.  
 
-Việc tiếp theo mà em làm là debug hàm `DialogFunc()` để xem xem giá trị `NAME` và `PASS` được lưu ở ô nhớ nào để tiện cho việc phân tích hàm `sub_4010FE()`.
-> Với điểu kiện là `NAME` phải dài từ 3 ký tự trở lên.  
+Việc tiếp theo mà em làm là debug hàm `DialogFunc()` để xem xem giá trị `NAME` và `PASS` được lưu ở ô nhớ như thế nào để tiện cho việc phân tích hàm `sub_4010FE()`.
+> Với điều kiện là `NAME` phải dài từ 3 ký tự trở lên.  
 
 Khi nhập vào `NAME=abcd` và `PASS=1234`, các giá trị sẽ được lưu ở các ô nhớ sau:  
+
 ![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/crack_001/crack_001_address.png)  
 
 Từ đây, ta biết được là `NAME` được bắt đầu lưu tại `403014` và ta cũng thấy được là `PASS` được bắt đầu lưu tại `40301A` với tên biến là `String`.  
