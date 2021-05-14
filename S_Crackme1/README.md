@@ -144,3 +144,5 @@ LABEL_23:
   return 0;
 }
 ```
+
+Hàm này khá là dài nhưng khi xem kỹ 1 chút thì em thấy có 2 hàm liên quan đến clipboard, đó là `OpenClipboard(0)` và `CloseClipboard()`. Từ đây em mạnh dạn đoán là chương trình sẽ đọc clipboard từ máy và thực hiện các tác tính toán và so sánh trên giá trị này.
