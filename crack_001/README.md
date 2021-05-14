@@ -185,7 +185,8 @@ Sau đó, byte liền trước của byte đang chứa ký tự hiện tại s�
 `v0` này là 1 biến tăng theo số vòng lặp, vì vậy ở vòng lặp đầu tiên, giá trị được gán vào byte liền trước này là `a`, ở vòng lặp kế là `b` và kế tiếp là `c`, vân vân.  
 Tiếp theo, giá trị của ký tự hiện tại sẽ tăng lên 1.  
 
-Tóm lại, nếu `NAME=ABC` thì ở vòng lặp 1, chuỗi mà ta sẽ dùng dể so sánh là `aB`; ở vòng lặp 2 là `bC`; vòng lặp 3 là `cD`.  
+Tóm lại, nếu `NAME=ABC` thì ở vòng lặp 1, chuỗi mà ta sẽ dùng dể so sánh là `a.(A + 1) = aB`; ở vòng lặp 2 là `b.(B + 1) = bC`; vòng lặp 3 là `c.(C + 1) = cD`.  
+> Dấu `.` giữa 2 ký tự là phép `concatenation`.
 
 Tiếp theo.  
 ```c
