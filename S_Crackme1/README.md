@@ -228,4 +228,24 @@ LABEL_22:
 Ở câu lệnh `if` kế tiếp. Vì ở `LABEL_22` sẽ in ra chuỗi `Registration failed!!!` nên theo dự đoán thì chúng ta phải tạo sẵn 1 file với tên `reg.key`.  
 
 Tiếp theo, chương trình sẽ đọc file vừa mở (nếu thành công) và kiểm tra xem số lượng ký tự có < 8 hay không. Nếu có thì in ra chuỗi `Registration failed!!!`.
-> Vậy chúng ta sẽ tạo sẵn 1 file tên `reg.key` chứa 8 ký tự để qua được 2 điều kiện này.
+> Vậy chúng ta sẽ tạo sẵn 1 file tên `reg.key` chứa 8 ký tự để qua được 2 điều kiện này.  
+
+Tiếp theo.
+```c
+if ( dword_403342 + (*((_DWORD *)lpBuffer + 1) ^ *(_DWORD *)lpBuffer) != const_1058 )
+    goto LABEL_22;
+SetDlgItemTextA(hWnd, 102, aGoodWorkYouHav);
+EnableWindow(::hWnd, 0);
+```  
+Để chương trình in ra chuỗi `Good work. You have done it!` thì `dword_403342 + (*((_DWORD *)lpBuffer + 1) ^ *(_DWORD *)lpBuffer)` phải bằng `1058`. Điều kiện này có nghĩa là lấy giá trị của 4 ký tự sau của chuỗi được đọc từ file `XOR` với giá trị của 4 ký tự đầu, sau đó cộng với `dword_403342`. Vì `dword_403342` đã bằng `0` nên việc ta cần làm là nhập vào file 1 chuỗi 8 ký tự sao cho 4 ký tự cuối `XOR` với 4 ký tự đầu bằng `1058`. Chúng ta có thể chọn đại 4 ký tự nào đó, lấy `0x422` (giá trị `hex` của `1058`) `XOR` với giá trị của 4 ký tự này thì sẽ được 4 ký tự kế tiếp.  
+
+Ở đây, em chọn `00aa` thì khi lấy `0x422 ^ 0x30306161`, kết quả là `0x30306543` tương đương `00eC`. Tuy nhiên, vì khi các giá trị này được load vào thanh ghi thì thứ tự sẽ bị đảo ngược lại (`little endian`) nên các ký tự này khi nhập vào file phải theo ký tự ngược lại.
+> Vậy chuỗi cần ghi vào file là `aa00Ce00`.
+
+```
+└─$ cat reg.key
+aa00Ce00
+```
+
+### Kiểm tra kết quả
+![image](https://user-images.githubusercontent.com/44528004/118344723-0295fc00-b55a-11eb-8066-ce7efc5b58f0.png)
