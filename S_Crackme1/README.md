@@ -145,4 +145,52 @@ LABEL_23:
 }
 ```
 
-Hàm này khá là dài nhưng khi xem kỹ 1 chút thì em thấy có 2 hàm liên quan đến clipboard, đó là `OpenClipboard(0)` và `CloseClipboard()`. Từ đây em mạnh dạn đoán là chương trình sẽ đọc clipboard từ máy và thực hiện các tác tính toán và so sánh trên giá trị này.
+Hàm này khá là dài nhưng khi xem kỹ 1 chút thì em thấy có 2 hàm liên quan đến clipboard, đó là `OpenClipboard(0)` và `CloseClipboard()`. Từ đây em mạnh dạn đoán là chương trình sẽ đọc clipboard từ máy và thực hiện các tác tính toán và so sánh trên giá trị này.  
+
+Chúng ta bắt đầu phân tích đoạn code làm việc với clipboard.  
+
+```c
+OpenClipboard(0);
+        v13 = GetClipboardData(1u);
+
+        if ( !v13 )
+          goto LABEL_30;
+
+        input_address = (int)v13;
+        v14 = __readeflags();
+        dword_403342 = const_1058;
+        v15 = const_15;
+        do
+        {
+          dword_403342 -= *(unsigned __int8 *)(v15 + input_address - 1);
+          --v15;
+        }
+        while ( v15 );
+        __writeeflags(v14);
+        if ( dword_403342 )
+        {
+LABEL_30:
+          SetDlgItemTextA(hWnd, 102, aRegistrationFa);
+        }
+        else
+        {
+          SetDlgItemTextA(hWnd, 102, aStep1OkNowRegi);
+          EnableWindow(dword_403356, 0);
+          EnableWindow(::hWnd, 1);
+        }
+        CloseClipboard();
+```  
+
+Sau một hồi debug, thì flow của đoạn code này như sau.  
+
+Chương trình có 2 biến hằng số là `dword_403342` với giá trị bằng `1058` và `v15` với giá trị bằng `15`.  Tiếp theo, chương trình sẽ lấy ký tự thứ `v15` từ clipboard, và trừ giá trị của `dword_403342` đi một con số bằng với giá trị của ký tự thứ `v15` này.  
+Vì `v15` là một biến lặp, nên nó sẽ giảm dần từ `15`, `14`, `13`, ..., `1`. Điều này tương đương với việc, chương trình sẽ lấy các ký tự từ clipboard theo thứ tự từ 15 tới 1 và trừ giá trị của `dword_403342` đi một lượng bằng giá trị của ký tự đang xét.  
+
+Sau đó chương trình sẽ kiểm tra xem sau vòng lặp này, giá trị của `dword_403342` có bằng `0` hay không. Nếu có thì in ra cửa sổ 1 chuỗi `Step 1 ok -> now Register it!`.  
+
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/S_Crackme1/s_crackme1_ida_view.png)  
+
+Vậy ta chọn 15 ký tự để copy sao cho tổng giá trị bằng `1058`. Chuỗi được chọn là `GGGGGGGGFFFFFFF`.  
+
+### Kiểm tra kết quả
+![image](https://user-images.githubusercontent.com/44528004/118341879-14bc6e00-b54b-11eb-8d03-f5e9e81381a5.png)
