@@ -201,3 +201,31 @@ Bấm thử nút `Register`.
 ![image](https://user-images.githubusercontent.com/44528004/118341921-551bec00-b54b-11eb-8fb2-fea96fad1def.png)
 
 > Chưa thể đăng ký.
+
+Tiếp tục phân tích hàm `DialogFunc()`.  
+
+```c
+v10 = CreateFileA(FileName, 0x80000000, 1u, 0, 3u, 0x80u, 0);
+    if ( v10 == (HANDLE)-1 )
+      goto LABEL_22;
+    hFile = v10;
+    v11 = GetFileSize(v10, 0);
+    if ( v11 < 8 )
+    {
+      CloseHandle(hFile);
+LABEL_22:
+      SetDlgItemTextA(hWnd, 102, aRegistrationFa);
+      EnableWindow(::hWnd, 0);
+      EnableWindow(dword_403356, 1);
+      goto LABEL_23;
+    }
+```  
+
+Ở đoạn code này, chương trình sẽ mở file với tên file là `reg.key` sau đó trả về `handle` của file đó. Nếu file không tồn tại thì một giá trị đại điện cho `INVALID_HANDLE_VALUE` .  
+> Theo [document](https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea) từ Microsoft, parameter thứ 4 có giá trị là `0x3` tương đương với operation `OPEN_EXISTING` và nếu file không tồn tại sẽ trả về `INVALID_HANDLE_VALUE`.  
+![image](https://user-images.githubusercontent.com/44528004/118342583-1b98b000-b54e-11eb-94a8-965b40633b36.png)  
+
+Ở câu lệnh `if` kế tiếp. Vì ở `LABEL_22` sẽ in ra chuỗi `Registration failed!!!` nên theo dự đoán thì chúng ta phải tạo sẵn 1 file với tên `reg.key`.  
+
+Tiếp theo, chương trình sẽ đọc file vừa mở (nếu thành công) và kiểm tra xem số lượng ký tự có < 8 hay không. Nếu có thì in ra chuỗi `Registration failed!!!`.
+> Vậy chúng ta sẽ tạo sẵn 1 file tên `reg.key` chứa 8 ký tự để qua được 2 điều kiện này.
