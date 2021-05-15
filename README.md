@@ -10,5 +10,5 @@
 | 1h |[get_the_password](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/get_the_password)|
 | 2h |[keygen](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/keygen)|
 | 1h |[crack_001](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/crack_001)|
-| |[S_Crackme1](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/S_Crackme1)|
+| 2h30 |[S_Crackme1](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/S_Crackme1)|
 | |[clone](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/clone)|
