@@ -194,3 +194,10 @@ Vậy ta chọn 15 ký tự để copy sao cho tổng giá trị bằng `1058`. 
 
 ### Kiểm tra kết quả
 ![image](https://user-images.githubusercontent.com/44528004/118341879-14bc6e00-b54b-11eb-8d03-f5e9e81381a5.png)
+
+> Bước 1 thành công.  
+
+Bấm thử nút `Register`.  
+![image](https://user-images.githubusercontent.com/44528004/118341921-551bec00-b54b-11eb-8fb2-fea96fad1def.png)
+
+> Chưa thể đăng ký.
