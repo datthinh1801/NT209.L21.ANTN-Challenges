@@ -421,10 +421,10 @@ serial = [0] * 8
 x = swap_word(0xff & (((processed_serial[7] + 16 * processed_serial[6]) ^ 0xCD) - 17)
               + ((0xff & (((processed_serial[5] + 16 * processed_serial[4]) ^ 0x90) - 85)
                   + ((0xff & (((processed_serial[3] + 16 * processed_serial[2]) ^ 0x56) + 120)
-                        + (0xff & (((processed_serial[1] + 16 * processed_serial[0]) ^ 0x12) + 52)  # byte 0
-                        << 8))      # byte 1
-                    << 8))      # byte 2
-                << 8))      # byte 3
+                        + (0xff & (((processed_serial[1] + 16 * processed_serial[0]) ^ 0x12) + 52)  # byte 0 of final_serial
+                        << 8))      # byte 1 of final_serial
+                    << 8))      # byte 2 of final_serial
+                << 8))      # byte 3 of final_serial
 # trước khi swap_word(),
 # byte layout là [b0][b1][b2][b3], tương đương [s0s1][s2s3][s4s5][s6s7] (với s[i] là ký tự thứ i của processed_serial).
 
