@@ -413,5 +413,52 @@ v11 = swap_word(v10)
 v11 += 0x1
 processed_user = swap_word(v11)
 print(hex(processed_user))  # processed_user = 0x827bbae0
+
+##### REVERSE SERIAL #####
+final_serial = processed_user
+serial = [0] * 8
+"""
+x = swap_word(0xff & (((processed_serial[7] + 16 * processed_serial[6]) ^ 0xCD) - 17)
+              + ((0xff & (((processed_serial[5] + 16 * processed_serial[4]) ^ 0x90) - 85)
+                  + ((0xff & (((processed_serial[3] + 16 * processed_serial[2]) ^ 0x56) + 120)
+                        + (0xff & (((processed_serial[1] + 16 * processed_serial[0]) ^ 0x12) + 52)  # byte 0
+                        << 8))      # byte 1
+                    << 8))      # byte 2
+                << 8))      # byte 3
+# trước khi swap_word(),
+# byte layout là [b0][b1][b2][b3], tương đương [s0s1][s2s3][s4s5][s6s7] (với s[i] là ký tự thứ i của processed_serial).
+
+# sau khi swap_word(),
+# byte layout là [b3][b2][b1][b0] và các bytes này phải bằng với byte của processed_user ở cùng vị trí.
+# Trong trường hợp này, khi processed_user = 0x827bbae0,
+# b3 = 0x82; b2 = 0x7b; b1 = 0xba; b0 = 0xe0.
+"""
+
+# tính ngược để tìm giá trị của các bytes của processed_serial
+byte_3_serial = ((final_serial >> 24) + 17) ^ 0xCD
+byte_2_serial = (((final_serial >> 16) & 0xff) + 85) ^ 0x90
+byte_1_serial = (((final_serial >> 8) & 0xff) - 120) ^ 0x56
+byte_0_serial = ((final_serial & 0xff) - 52) ^ 0x12
+
+# sắp xếp lại vị trí của các byte này giống với thứ tự trước khi swap_word()
+serial_bytes_arr = [byte_0_serial, byte_1_serial, byte_2_serial, byte_3_serial]
+
+# fun fact: 0xe + 16 * 0xf = 0xfe => s[1] + 16 * s[0] = s[0]s[1]
+for i in range(8):
+    # nếu ta đang xét ký tự ở vị trí chẵn
+    if i % 2 == 0:
+        # giá trị của nó phải bằng với 4 bit cao ở byte tương ứng (theo fun fact ở trên)
+        must_match_value = serial_bytes_arr[i // 2] >> 4
+    else:
+    # nếu không, giá trị bằng 4 bit thấp ở byte tương ứng.
+        must_match_value = serial_bytes_arr[i // 2] & 0xf
+
+    if must_match_value > 0x9:
+        serial[i] = must_match_value + ord('7')
+    else:
+        serial[i] = must_match_value + ord('0')
+    print(chr(serial[i]), end="")
+# BE14405E
+
 ```
-Với `User` bằng `abcde` thì giá trị của `processed_user` sẽ bằng `0x827bbae0`. Vậy chúng ta sẽ tìm `Serial` sao cho sau các bước tính toán thì `processed_serial` cũng bằng `0x827bbae0`.
+
