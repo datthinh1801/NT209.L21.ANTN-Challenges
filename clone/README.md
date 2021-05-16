@@ -435,10 +435,10 @@ x = swap_word(0xff & (((processed_serial[7] + 16 * processed_serial[6]) ^ 0xCD) 
 """
 
 # tính ngược để tìm giá trị của các bytes của processed_serial
-byte_3_serial = ((final_serial >> 24) + 17) ^ 0xCD
-byte_2_serial = (((final_serial >> 16) & 0xff) + 85) ^ 0x90
-byte_1_serial = (((final_serial >> 8) & 0xff) - 120) ^ 0x56
-byte_0_serial = ((final_serial & 0xff) - 52) ^ 0x12
+byte_3_serial = ((final_serial >> 24) + 17) ^ 0xCD              # extract pre-computed byte 0 of final_result
+byte_2_serial = (((final_serial >> 16) & 0xff) + 85) ^ 0x90     # extract pre-computed byte 1 of final_result
+byte_1_serial = (((final_serial >> 8) & 0xff) - 120) ^ 0x56     # extract pre-computed byte 2 of final_result
+byte_0_serial = ((final_serial & 0xff) - 52) ^ 0x12             # extract pre-computed byte 3 of final_result
 
 # sắp xếp lại vị trí của các byte này giống với thứ tự trước khi swap_word()
 serial_bytes_arr = [byte_0_serial, byte_1_serial, byte_2_serial, byte_3_serial]
