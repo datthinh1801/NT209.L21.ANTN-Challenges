@@ -412,3 +412,4 @@ v11 += 0x1
 processed_user = swap_word(v11)
 print(hex(processed_user))  # processed_user = 0x827bbae0
 ```
+Với `User` bằng `abcde` thì giá trị của `processed_user` sẽ bằng `0x827bbae0`. Vậy chúng ta sẽ tìm `Serial` sao cho sau các bước tính toán thì `processed_serial` cũng bằng `0x827bbae0`.
