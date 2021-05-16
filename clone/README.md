@@ -52,7 +52,6 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
         && GetDlgItemTextA(hWnd, 102, String, 25) == 8
         && GetDlgItemTextA(hWnd, 101, byte_40307C, 30) >= 5 )
       {
-        // START PROCESS USER
         v4 = &byte_40307C[4];
         v5 = 0;
         do
@@ -82,8 +81,6 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
         v11 = _byteswap_ulong(v10);
         LOWORD(v11) = v11 + 1;
         dword_4030C8 = _byteswap_ulong(v11);
-        
-        // START PROCESS SERIAL
         v12 = 0;
         v13 = String;
         while ( 1 )
@@ -169,6 +166,7 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
         && GetDlgItemTextA(hWnd, 102, Serial, 25) == 8
         && GetDlgItemTextA(hWnd, 101, User, 30) >= 5 )
       {
+        // START PROCESS USER
         v4 = &User[4];
         v5 = 0;
         do
@@ -198,6 +196,8 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
         v11 = _byteswap_ulong(v10);
         LOWORD(v11) = v11 + 1;
         processed_user = _byteswap_ulong(v11);
+        
+        # START PROCESS SERIAL
         v12 = 0;
         v13 = Serial;
         while ( 1 )
