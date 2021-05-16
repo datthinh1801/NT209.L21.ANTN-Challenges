@@ -330,6 +330,8 @@ if ( processed_user == _byteswap_ulong(
 
 Ở điều kiện quyết định này, giá trị của `processed_user` phải bằng với giá trị của `processed_serial` sau thêm một vài bước xử lý.  
 
+Cụ thể hơn, `byte 0` của `processed_serial` (sau các bước tính toán này) sẽ phải bằng với `byte 3` của `processed_user`; `byte 1` của `processed_serial` phải bằng với `byte 2` của `processed_user`; `byte 2` của `processed_serial` phải bằng với `byte 1` của `processed_user`; và `byte 3` của `processed_serial` phải bằng với `byte 0` của `processed_user`.
+
 Vậy để giải được bài trên, chúng ta có thể chọn 1 chuỗi `User` sau đó tìm `Serial` tương ứng để thỏa các điều kiện, hoặc ngược lại.
 
 ### Script
