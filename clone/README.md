@@ -277,3 +277,57 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 ```  
 
 Ở đoạn code xử lý `User`, nhìn chung, các ký tự thứ 5 trở đi của `User` sẽ được cộng dồn vào 1 biến gọi là `accumulated_user_chars`. Sau đó giá trị của biến này sẽ được dùng để thực hiện các phép tính toán và kết quả cuối cùng sẽ được lưu vào 1 biến gọi là `processed_user`.
+
+### Process `Serial`
+
+```c
+// START PROCESS SERIAL
+        processed_serial_index = 0;
+        cur_serial_char_addr = Serial;
+        while ( 1 )
+        {
+          cur_serial_char = *cur_serial_char_addr;
+          if ( !*cur_serial_char_addr )
+            break;
+          if ( (unsigned __int8)cur_serial_char < '0' )
+            return 0;
+          if ( (unsigned __int8)cur_serial_char > '9' )
+          {
+            if ( (unsigned __int8)cur_serial_char < 'A' || (unsigned __int8)cur_serial_char > 'F' )
+              return 0;
+            processed_serial[processed_serial_index] = cur_serial_char - '7';
+            ++cur_serial_char_addr;
+            ++processed_serial_index;
+          }
+          else
+          {
+            processed_serial[processed_serial_index] = cur_serial_char - '0';
+            ++cur_serial_char_addr;
+            ++processed_serial_index;
+          }
+        }
+```  
+
+Ở đoạn code xử lý `Serial`, từng ký tự của `Serial` được lấy ra để thực hiện tính toán và so sánh. Khác với khi xử lý `User`, việc xử lý `Serial` sẽ bị kết thúc nếu không thỏa các điều kiện sau:
+1. Một ký tự nào đó < `'0'`
+2. Một ký tự nào đó > `'9'` nhưng nằm ngoài các giá trị từ `'A'` đến `'F'`.
+
+> Vậy các ký tự của `Serial` phải `>= '0'` và `<= '9'`, nếu `> '9'` thì phải là các ký tự từ `'A'` đến `'F'`.  
+
+### Điều kiện quyết định
+
+```c
+if ( processed_user == _byteswap_ulong(
+                                 (unsigned __int8)(((processed_serial[7] + 16 * processed_serial[6]) ^ 0xCD) - 17)
+                               + (((unsigned __int8)(((processed_serial[5] + 16 * processed_serial[4]) ^ 0x90) - 85)
+                                 + (((unsigned __int8)(((processed_serial[3] + 16 * processed_serial[2]) ^ 0x56) + 120)
+                                   + ((unsigned __int8)(((processed_serial[1] + 16 * processed_serial[0]) ^ 0x12) + 52) << 8)) << 8)) << 8)) )
+        {
+          MessageBoxA(0, Text, Caption, 0x40u);
+          SetWindowTextA(hWnd, aCloneDefeated);
+        }
+```
+
+Ở điều kiện quyết định này, giá trị của `processed_user` phải bằng với giá trị của `processed_serial` sau thêm một vài bước xử lý.  
+
+Vậy để giải được bài trên, chúng ta có thể chọn 1 chuỗi `User` sau đó tìm `Serial` tương ứng để thỏa các điều kiện, hoặc ngược lại.
