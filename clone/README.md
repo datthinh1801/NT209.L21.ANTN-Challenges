@@ -460,5 +460,12 @@ for i in range(8):
     print(chr(serial[i]), end="")
 # BE14405E
 
-```
+```  
+
+Vậy với `User = abcde`, `Serial = BE14405E`.
+
+### Kiểm tra kết quả
+![image](https://user-images.githubusercontent.com/44528004/118386843-83c9bd80-b644-11eb-8819-ea44d0fe1e4d.png)  
+
+> Bravo!!!!!!!!!!
 
