@@ -141,15 +141,15 @@ Sau một hồi debug thì đây là pseudocode của chương trình với các
 LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
   CHAR *v4; // ecx
-  char v5; // dl
+  char accumulated_user_chars; // dl
   unsigned __int16 v6; // cx
   unsigned __int32 v7; // ecx
   unsigned int v8; // ecx
   unsigned int v9; // ecx
   unsigned int v10; // ecx
   unsigned int v11; // ecx
-  int v12; // ecx
-  CHAR *v13; // eax
+  int processed_serial_index; // ecx
+  CHAR *cur_serial_char_addr; // eax
   CHAR cur_serial_char; // bl
 
   switch ( Msg )
