@@ -177,7 +177,7 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
         v7 = _byteswap_ulong(v6);
         LOBYTE(v7) = accumulated_user_chars;
         BYTE1(v7) = accumulated_user_chars;
-        v8 = _byteswap_ulong(_byteswap_ulong(_byteswap_ulong(*(_DWORD *)User ^ v7) + 50470918) + 559038242);
+        v8 = _byteswap_ulong(_byteswap_ulong(_byteswap_ulong(*(_DWORD *)User ^ v7) + 0x3022006) + 0x21523F22);
         LOBYTE(v8) = v8 + 1;
         ++BYTE1(v8);
         v9 = _byteswap_ulong(v8);
@@ -188,8 +188,8 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
               + _byteswap_ulong(
                   _byteswap_ulong(
                     _byteswap_ulong(
-                      _byteswap_ulong(_byteswap_ulong(_byteswap_ulong(_byteswap_ulong(v9) ^ 0xEDB88320) - 680876936) + 1341392178)
-                    + 195935983)
+                      _byteswap_ulong(_byteswap_ulong(_byteswap_ulong(_byteswap_ulong(v9) ^ 0xEDB88320) - 0x28955B88) + 0x4FF40532)
+                    + 0xBADBEEF)
                   + 1)
                 - 1));
         LOWORD(v10) = v10 + 1;
