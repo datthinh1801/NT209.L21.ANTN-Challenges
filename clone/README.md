@@ -240,3 +240,40 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
   return 0;
 }
 ```
+
+### Process `User`
+
+```c
+// START PROCESS USER
+        v4 = &User[4];
+        accumulated_user_chars = 0;
+        do
+          accumulated_user_chars += *v4++;
+        while ( *v4 );
+        LOBYTE(v6) = accumulated_user_chars;
+        HIBYTE(v6) = accumulated_user_chars;
+        v7 = _byteswap_ulong(v6);
+        LOBYTE(v7) = accumulated_user_chars;
+        BYTE1(v7) = accumulated_user_chars;
+        v8 = _byteswap_ulong(_byteswap_ulong(_byteswap_ulong(*(_DWORD *)User ^ v7) + 50470918) + 559038242);
+        LOBYTE(v8) = v8 + 1;
+        ++BYTE1(v8);
+        v9 = _byteswap_ulong(v8);
+        LOBYTE(v9) = v9 - 1;
+        --BYTE1(v9);
+        v10 = _byteswap_ulong(
+                *(_DWORD *)User
+              + _byteswap_ulong(
+                  _byteswap_ulong(
+                    _byteswap_ulong(
+                      _byteswap_ulong(_byteswap_ulong(_byteswap_ulong(_byteswap_ulong(v9) ^ 0xEDB88320) - 680876936) + 1341392178)
+                    + 195935983)
+                  + 1)
+                - 1));
+        LOWORD(v10) = v10 + 1;
+        v11 = _byteswap_ulong(v10);
+        LOWORD(v11) = v11 + 1;
+        processed_user = _byteswap_ulong(v11);
+```  
+
+Ở đoạn code xử lý `User`, nhìn chung, các ký tự thứ 5 trở đi của `User` sẽ được cộng dồn vào 1 biến gọi là `accumulated_user_chars`. Sau đó giá trị của biến này sẽ được dùng để thực hiện các phép tính toán và kết quả cuối cùng sẽ được lưu vào 1 biến gọi là `processed_user`.
