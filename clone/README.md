@@ -197,7 +197,7 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
         LOWORD(v11) = v11 + 1;
         processed_user = _byteswap_ulong(v11);
         
-        # START PROCESS SERIAL
+        // START PROCESS SERIAL
         v12 = 0;
         v13 = Serial;
         while ( 1 )
