@@ -168,15 +168,15 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
       {
         // START PROCESS USER
         v4 = &User[4];
-        v5 = 0;
+        accumulated_user_chars = 0;
         do
-          v5 += *v4++;
+          accumulated_user_chars += *v4++;
         while ( *v4 );
-        LOBYTE(v6) = v5;
-        HIBYTE(v6) = v5;
+        LOBYTE(v6) = accumulated_user_chars;
+        HIBYTE(v6) = accumulated_user_chars;
         v7 = _byteswap_ulong(v6);
-        LOBYTE(v7) = v5;
-        BYTE1(v7) = v5;
+        LOBYTE(v7) = accumulated_user_chars;
+        BYTE1(v7) = accumulated_user_chars;
         v8 = _byteswap_ulong(_byteswap_ulong(_byteswap_ulong(*(_DWORD *)User ^ v7) + 50470918) + 559038242);
         LOBYTE(v8) = v8 + 1;
         ++BYTE1(v8);
@@ -198,12 +198,12 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
         processed_user = _byteswap_ulong(v11);
         
         // START PROCESS SERIAL
-        v12 = 0;
-        v13 = Serial;
+        processed_serial_index = 0;
+        cur_serial_char_addr = Serial;
         while ( 1 )
         {
-          cur_serial_char = *v13;
-          if ( !*v13 )
+          cur_serial_char = *cur_serial_char_addr;
+          if ( !*cur_serial_char_addr )
             break;
           if ( (unsigned __int8)cur_serial_char < '0' )
             return 0;
@@ -211,15 +211,15 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
           {
             if ( (unsigned __int8)cur_serial_char < 'A' || (unsigned __int8)cur_serial_char > 'F' )
               return 0;
-            processed_serial[v12] = cur_serial_char - '7';
-            ++v13;
-            ++v12;
+            processed_serial[processed_serial_index] = cur_serial_char - '7';
+            ++cur_serial_char_addr;
+            ++processed_serial_index;
           }
           else
           {
-            processed_serial[v12] = cur_serial_char - '0';
-            ++v13;
-            ++v12;
+            processed_serial[processed_serial_index] = cur_serial_char - '0';
+            ++cur_serial_char_addr;
+            ++processed_serial_index;
           }
         }
 
