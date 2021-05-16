@@ -312,7 +312,7 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 1. Một ký tự nào đó < `'0'`
 2. Một ký tự nào đó > `'9'` nhưng nằm ngoài các giá trị từ `'A'` đến `'F'`.
 
-> Vậy các ký tự của `Serial` phải `>= '0'` và `<= '9'`, nếu `> '9'` thì phải là các ký tự từ `'A'` đến `'F'`.  
+> Vậy các ký tự của `Serial` phải `>= '0'` và `<= '9'`, nếu `> '9'` thì phải là các ký tự từ `'A'` đến `'F'`. Và nhờ đó, giá trị sau khi tính, thuộc [0, 15], luôn có thể được biểu diễn bằng 1 ký tự hexa hỗ trợ việc tính toán bên dưới.  
 
 ### Điều kiện quyết định
 
