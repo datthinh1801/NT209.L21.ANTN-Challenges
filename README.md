@@ -11,4 +11,4 @@
 | 2h |[keygen](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/keygen)|
 | 1h |[crack_001](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/crack_001)|
 | 2h30m |[S_Crackme1](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/S_Crackme1)|
-| |[clone](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/clone)|
+| 5h |[clone](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/clone)|
