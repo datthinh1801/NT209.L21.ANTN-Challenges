@@ -123,3 +123,15 @@ LRESULT __stdcall sub_401180(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
   return 0;
 }  
 
+Trước tiên, nhìn vào điều kiện của `case` mà sẽ in ra chuỗi chúc mừng.  
+
+```c
+if ( lParam
+        && wParam == 103
+        && GetDlgItemTextA(hWnd, 102, String, 25) == 8
+        && GetDlgItemTextA(hWnd, 101, byte_40307C, 30) >= 5 )
+```  
+
+`lParam` và `wParam` là gì thì em không rõ, nhưng em có thể đoán được 2 điều kiện sau là `User` hoặc `Serial` phải bằng `8` hoặc lớn hơn hoặc bằng `5`. Em tiến hành test thử từng trường hợp thì thấy là khi nhập `User` có độ dài là `5` và `Serial` có độ dài là `8` thì điều kiện trả về `true`.  
+> Vậy `String` chính là `Serial` và `byte_40307C` chính là `User`.  
+
