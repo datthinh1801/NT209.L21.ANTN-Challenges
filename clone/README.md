@@ -331,3 +331,84 @@ if ( processed_user == _byteswap_ulong(
 Ở điều kiện quyết định này, giá trị của `processed_user` phải bằng với giá trị của `processed_serial` sau thêm một vài bước xử lý.  
 
 Vậy để giải được bài trên, chúng ta có thể chọn 1 chuỗi `User` sau đó tìm `Serial` tương ứng để thỏa các điều kiện, hoặc ngược lại.
+
+### Script
+Tính `User`.
+```python
+def get_low_word(dword):
+    return dword & 0xffff
+
+
+def get_high_word(dword):
+    return (dword >> 16) & 0xffff
+
+
+def get_low_byte(word):
+    return word & 0xff
+
+
+def get_high_byte(word):
+    return (word >> 8) & 0xff
+
+
+def swap_word(dword):
+    low_word = get_low_word(dword)
+    high_word = get_high_word(dword)
+    reversed_low_word = (get_low_byte(low_word) << 8) ^ get_high_byte(low_word)
+    reversed_high_word = (get_low_byte(high_word) <<
+                          8) ^ get_high_byte(high_word)
+    return (reversed_low_word << 16) ^ reversed_high_word
+
+
+def string_to_ascii_little_endian(s):
+    res = 0
+    for c in s[::-1]:
+        res <<= 8
+        res ^= ord(c)
+    return res
+
+
+# Process user
+user = "abcde"
+accumulated_user_chars = 0
+
+for c in user[4:]:
+    accumulated_user_chars += ord(c)
+    accumulated_user_chars &= 0xff
+
+v6 = accumulated_user_chars
+v6 = (accumulated_user_chars << 8) ^ accumulated_user_chars
+v7 = swap_word(v6)
+v7 ^= accumulated_user_chars
+v7 ^= (accumulated_user_chars << 8)
+
+v8 = swap_word(swap_word(swap_word((string_to_ascii_little_endian(
+    user) ^ v7) & 0xffffffff) + 0x3022006) + 0x21523f22)
+
+v8 += 0x1
+v8 += 0x100
+
+v9 = swap_word(v8)
+v9 -= 0x1
+v9 -= 0x100
+
+v10 = swap_word(
+    (string_to_ascii_little_endian(user) & 0xffffffff) +
+    swap_word(
+        swap_word(
+            swap_word(
+                swap_word(
+                    swap_word(
+                        swap_word(
+                            swap_word(v9) ^ 0xEDB88320)
+                        - 0x28955B88)
+                    + 0x4FF40532)
+                + 0xBADBEEF)
+            + 0x1) - 0x1))
+
+v10 += 0x1
+v11 = swap_word(v10)
+v11 += 0x1
+processed_user = swap_word(v11)
+print(hex(processed_user))  # processed_user = 0x827bbae0
+```
