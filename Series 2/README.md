@@ -3,7 +3,7 @@
 |---|---|
 | 20m | [EscapeTheDunge0n](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/EscapeTheDunge0n%20-%20Expl0it)|
 | 10m | [Findpassword](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/Find%20password) |
-| | [Just crackme](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/Just%20crackme) |
+| 20m | [Just crackme](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/Just%20crackme) |
 | | [ZED-crackme](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/ZED-Crackme) |
 | | [racecars](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/racecars)|
 | | [Keygen Me Part 1](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/Keygen%20Me%20Part%201) |
