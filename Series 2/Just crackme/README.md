@@ -47,7 +47,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 
 Sau khi debug thì chúng ta có được các thông tin sau:
 1. Chương trình sẽ lấy tên user của máy sau đó sẽ nối vào chuỗi `Wait, your name is`.
-> Trong trường hợp này, user của mình là `datthinh` nên chuỗi sau khi nối sẽ là `Wait, your name isdatthinh`.
+    > Trong trường hợp này, user của mình là `datthinh` nên chuỗi sau khi nối sẽ là `Wait, your name isdatthinh` *(không có dấu cách giữa `is` và `datthinh`)*.
 2. Tiếp theo, chuỗi này sẽ được đem đi xử lý phụ thuộc vào thời gian hiện tại.  
 ```c
 __int64 __fastcall compare(__int64 a1)
@@ -65,7 +65,8 @@ __int64 __fastcall compare(__int64 a1)
   return a1;
 }
 ```  
-Xem đoạn code trên thì ta có thể thấy, từng ký tự của chuỗi sẽ được `XOR` với 1 giá trị được lấy từ phút (`tm_min`) và theo mình đoán là ngày của tháng (`tm_mday`).
+Xem đoạn code trên thì ta có thể thấy, từng ký tự của chuỗi sẽ được `XOR` với 1 giá trị được lấy từ phút hiện tại (`tm_min`) và theo mình đoán là ngày của tháng hiện tại (`tm_mday`).  
+
 3. Sau đó, chuỗi vừa được thay đổi này sẽ được đem so sánh với chuỗi `flag` mà chúng ta nhập từ màn hình.  
 
 Vậy ngay sau khi debug và có được chuỗi sau khi xử lý, chúng ta phải nhanh tay nhập chuỗi này vào chương trình thì mới thành công.  
