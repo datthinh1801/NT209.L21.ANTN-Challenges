@@ -64,10 +64,13 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 ```  
 
 Từ đoạn pseudocode trên, để chuỗi `Congratulation !!!` được in ra màn hình thì biến `v4` phải bằng `0`.  
+
 Để `v4 == 0` thì ở vòng lặp `for` ngay bên trên, các giá trị tại vị trí `i` của `v6` phải bằng các giá trị tại vị trí `i` của `password` để `v4` không được gán bằng `1`.  
 Chuỗi `v6` này là chuỗi `gssw#tpcz` đã được thay đổi với 1 giá trị random. Tuy nhiên, hàm random này được seed 1 giá trị cố định `1983` nên giá trị được random ở các lần chạy khác nhau đều bằng nhau.  
+
 Vậy việc chúng ta cần làm là debug chương trình để xem từng ký tự này là gì thì sẽ có được `password` tương ứng.  
 
+---
 Sau quá trình debug thì chuỗi `password` có được là `dont play`. Vì chuỗi này có dấu cách nhưng nếu chúng ta nhập `dont play` thì chương trình sẽ nhận đây là 2 tham số `dont` và `play`. Vậy để nhập được chuỗi này trên linux thì chúng ta phải dùng `\` operator để nối chuỗi có khoảng trắng.
 > Vậy chuỗi cần nhập là `dont\ play`.  
 
