@@ -66,7 +66,7 @@ Từ đoạn pseudocode trên, để chuỗi `Congratulations!` được in ra m
 - Lấy giá trị số nguyên của ký tự thứ `i`, gán vào `v3`
 - Truy xuất tới phần tử thứ `v3` của mảng `byte_4188F0`
 - Gán giá trị của phần tử thứ `v3` của mảng `byte_4188F0` vào `Buffer[i]`
-- `i += `, xét phần tử kế tiếp cho đến khi gặp giá trị `null`
+- `i += 1`, xét phần tử kế tiếp cho đến khi gặp giá trị `null`
 
 ### Script exploit
 ```python
