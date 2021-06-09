@@ -62,6 +62,10 @@ Tiến hành debug và trace theo flow của chương trình.
 
 ![image](https://user-images.githubusercontent.com/44528004/121341306-bcf70400-c94a-11eb-88cc-72f4b6a1af0f.png)  
 
+Khi trace đến đây thì ta thấy hàm `sub_F763D0` có thực hiện các phép so sánh và sau đó trả về các giá trị `0` hoặc `1` làm ảnh hưởng đến câu lệnh `if` ở hàm `main`. Vậy để in được `correct_string` thì hàm này phải trả về `1`, điều này tương đương với việc câu lệnh `if ( sub_F71645(this + 72, -858993460) != 18 )` và 
+`if ( *(char *)sub_F7164A(i) != this[4 * i] )` trong vòng lặp `for` phải sai để hàm không trả về `0`.  
+
+Tiếp tục debug chương trình với câu lệnh `if ( sub_F71645(this + 72, -858993460) != 18 )`.  
 ![image](https://user-images.githubusercontent.com/44528004/121341353-c7190280-c94a-11eb-8b35-eec53b69a68f.png)  
 
 ![image](https://user-images.githubusercontent.com/44528004/121341375-cbddb680-c94a-11eb-8dbf-157d4b245ed2.png)
