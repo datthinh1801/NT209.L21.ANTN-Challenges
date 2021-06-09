@@ -75,6 +75,12 @@ Sau vài lần debug thì ta biết được hàm này trả về độ dài chu
 
 Tiếp tục debug với chuỗi nhập mới gồm 18 ký tự `a`.  
 
+![image](https://user-images.githubusercontent.com/44528004/121343800-41e31d00-c94d-11eb-9a9d-13da9c383560.png)
+
+![image](https://user-images.githubusercontent.com/44528004/121343976-6e973480-c94d-11eb-9ea7-b5427db24fd1.png)  
+
+Từ hình trên thì có thể đoán được là ký tự tại vị trí `i` của chuỗi nhập sẽ được so sánh với một ký tự nào đó (`0x65` là mã ascii của ký tự `e`). Các ký tự *nào đó* này chính là các ký tự của chuỗi *không liên tiếp* `encrypted-c-string` (như stack view ở bên dưới). Đồng thời, câu lệnh `if` so sánh ký tự thứ `i` của chuỗi nhập với ký tự thứ `4 * i` của chuỗi `encrypted-c-string` (bỏ qua 3 bytes padding`.  
+
 ```
 Stack[000007E4]:0053FD44 db  65h ; e
 Stack[000007E4]:0053FD45 db    0
@@ -148,4 +154,14 @@ Stack[000007E4]:0053FD88 db  67h ; g
 Stack[000007E4]:0053FD89 db    0
 Stack[000007E4]:0053FD8A db    0
 Stack[000007E4]:0053FD8B db    0
+```  
+
+Khi đã debug tới đây thì ta không ngần ngại thử ngay `password` là `encrypted-c-string` vì chuỗi này cũng có 18 ký tự.  
+
+### Kiểm tra kết quả
 ```
+└─$ ./crackme.exe
+Enter password: encrypted-c-string
+CORRECT
+```
+> Chính xác!
