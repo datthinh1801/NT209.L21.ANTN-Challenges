@@ -51,3 +51,17 @@ int __cdecl main_0(int argc, const char **argv, const char **envp)
   return 0;
 }
 ```
+
+![image](https://user-images.githubusercontent.com/44528004/121341260-af417e80-c94a-11eb-9933-9f8c2010d836.png)  
+
+![image](https://user-images.githubusercontent.com/44528004/121341283-b5375f80-c94a-11eb-98fe-262315515b27.png)  
+
+![image](https://user-images.githubusercontent.com/44528004/121341306-bcf70400-c94a-11eb-88cc-72f4b6a1af0f.png)  
+
+![image](https://user-images.githubusercontent.com/44528004/121341353-c7190280-c94a-11eb-8b35-eec53b69a68f.png)  
+
+![image](https://user-images.githubusercontent.com/44528004/121341375-cbddb680-c94a-11eb-8dbf-157d4b245ed2.png)
+
+
+
+
