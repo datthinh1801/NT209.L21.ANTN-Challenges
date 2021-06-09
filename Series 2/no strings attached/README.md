@@ -62,7 +62,8 @@ Tiến hành debug và trace theo flow của chương trình.
 
 ![image](https://user-images.githubusercontent.com/44528004/121341306-bcf70400-c94a-11eb-88cc-72f4b6a1af0f.png)  
 
-Khi trace đến đây thì ta thấy hàm `sub_F763D0` có thực hiện các phép so sánh và sau đó trả về các giá trị `0` hoặc `1` làm ảnh hưởng đến câu lệnh `if` ở hàm `main`. Vậy để in được `correct_string` thì hàm này phải trả về `1`, điều này tương đương với việc câu lệnh `if (sub_F71645(this + 72, -858993460) != 18)` và 
+Khi trace đến đây thì ta thấy hàm `sub_F763D0` có thực hiện các phép so sánh và sau đó trả về các giá trị `0` hoặc `1` làm ảnh hưởng đến câu lệnh `if` ở hàm `main`.  
+Vậy để in được `correct_string` thì hàm này phải trả về `1`, điều này tương đương với việc câu lệnh `if (sub_F71645(this + 72, -858993460) != 18)` và 
 `if (*(char *)sub_F7164A(i) != this[4 * i])` trong vòng lặp `for` phải sai để hàm không trả về `0`.  
 
 Tiếp tục debug chương trình với câu lệnh `if ( sub_F71645(this + 72, -858993460) != 18 )`.  
@@ -79,7 +80,7 @@ Tiếp tục debug với chuỗi nhập mới gồm 18 ký tự `a`.
 
 ![image](https://user-images.githubusercontent.com/44528004/121343976-6e973480-c94d-11eb-9ea7-b5427db24fd1.png)  
 
-Từ hình trên thì có thể đoán được là ký tự tại vị trí `i` của chuỗi nhập sẽ được so sánh với một ký tự nào đó (`0x65` là mã ascii của ký tự `e`). Các ký tự *nào đó* này chính là các ký tự của chuỗi *không liên tiếp* `encrypted-c-string` (như stack view ở bên dưới). Đồng thời, câu lệnh `if` so sánh ký tự thứ `i` của chuỗi nhập với ký tự thứ `4 * i` của chuỗi `encrypted-c-string` (bỏ qua 3 bytes padding`.  
+Từ hình trên thì có thể đoán được là ký tự tại vị trí `i` của chuỗi nhập sẽ được so sánh với một ký tự nào đó (`0x65` là mã ascii của ký tự `e`). Các ký tự *nào đó* này chính là các ký tự của chuỗi *không liên tiếp* `encrypted-c-string` (như stack view ở bên dưới). Đồng thời, câu lệnh `if` so sánh ký tự thứ `i` của chuỗi nhập với ký tự thứ `4 * i` của chuỗi `encrypted-c-string` (bỏ qua 3 bytes padding), có nghĩa là chuỗi nhập sẽ được so sánh với chuỗi `"encrypted-c-string"`.  
 
 ```
 Stack[000007E4]:0053FD44 db  65h ; e
