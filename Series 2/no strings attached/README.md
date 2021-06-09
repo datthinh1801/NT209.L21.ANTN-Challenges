@@ -66,9 +66,14 @@ Khi trace đến đây thì ta thấy hàm `sub_F763D0` có thực hiện các p
 `if ( *(char *)sub_F7164A(i) != this[4 * i] )` trong vòng lặp `for` phải sai để hàm không trả về `0`.  
 
 Tiếp tục debug chương trình với câu lệnh `if ( sub_F71645(this + 72, -858993460) != 18 )`.  
+
 ![image](https://user-images.githubusercontent.com/44528004/121341353-c7190280-c94a-11eb-8b35-eec53b69a68f.png)  
 
 ![image](https://user-images.githubusercontent.com/44528004/121341375-cbddb680-c94a-11eb-8dbf-157d4b245ed2.png)
+
+Sau vài lần debug thì ta biết được hàm này trả về độ dài chuỗi nhập. Trong trường hợp này, khi chuỗi nhập là `abcdef` thì hàm trả về `6` tương đương độ dài của chuỗi. Vậy để bypass câu lệnh `if` đầu tiên thì chuỗi nhập phải có độ dài là `18`.  
+
+Tiếp tục debug với chuỗi nhập mới gồm 18 ký tự `a`.  
 
 ```
 Stack[000007E4]:0053FD44 db  65h ; e
