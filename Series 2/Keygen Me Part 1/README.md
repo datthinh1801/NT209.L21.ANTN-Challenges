@@ -688,3 +688,27 @@ LABEL_36:
   return 0;
 }
 ```  
+
+Khi xem pseudocode thì phát hiện chuỗi mà chúng ta muốn chương trình in ra là `[-]Wow! You're god damn genius!\n[+]Now make a keygen :)`.  
+```c
+if ( !v41 )
+    {
+      v42 = sub_F72140(std::cout, "[-]Wow! You're god damn genius!\n[+]Now make a keygen :)");
+      std::ostream::operator<<(v42, sub_F72390);
+      system("color 2");
+```
+
+Vậy để chương trình in ra chuỗi trên thì `v41` phải bằng `0`.  
+
+Mà để `v41` bằng `0` thì `LABEL_63` phải được thực thi.  
+```c
+LABEL_63:
+    v41 = 0;
+```  
+
+Để `LABEL_63` được thực thi thì `LABEL_54` phải được thực thi.  
+```c
+LABEL_54:
+      if ( v36 == -4 )
+        goto LABEL_63;
+```
