@@ -739,7 +739,7 @@ LABEL_54:
 ```  
 
 #### Xét hướng giải 1 (`Size[0] < 4`)
-Trong quá trình debug thì chúng ta thấy rằng `Size[0]` sẽ bằng `v62[0] - 1` và `v62[0]` là giá trị được tính toán từ `username`. Ở đây, `username` sẽ được đổi thành UPPERCASE trước khi trải qua các bước tính toán.  
+Trong quá trình debug thì chúng ta thấy rằng `Size[0]` sẽ bằng `v62[0] - 1` và `v62[0]` là giá trị được tính toán từ `username`. Ở đây, `username` sẽ được UPPERCASE trước khi trải qua các bước tính toán.  
 > Với ký tự `a` (hoặc `A`) thì `v62[0]` sẽ được cộng thêm `3`.  
 > Với ký tự `b`, `c` (hoặc `B`, `C`) thì `v62[0]` sẽ được cộng thêm `5`.
 > Vân vân. Các giá trị này có lẽ là theo một quy luật nào đó.  
