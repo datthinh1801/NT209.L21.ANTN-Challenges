@@ -787,4 +787,72 @@ Có thể thấy `v41 = v37 ? -1 : 1`, nghĩa là v41 sẽ không bao giờ bằ
 #### Xét hướng giải 2
 Ở hướng giải này, chúng ta cần tìm `username` sao cho `v62[0]` có giá trị bằng `4*k + 1` để `Size[0] = v62[0] - 1 = 4*k`. Khi đó, `v36` mới có khả năng bằng `-4`.  
 
-Ở hướng giải 1, ta biết được là với ký tự `d`, `v62[0]` được cộng thêm `4`; với ký tự `b` thì cộng thêm `5` và `4 + 5 = 9 = 4*2 + 1`. Vậy `username` mới sẽ là `bd..................................`. Và với `username` trên, độ dài `serial` sẽ là 8. Vậy ta chọn `serial` bằng `12345678`.
+Ở hướng giải 1, ta biết được là với ký tự `d`, `v62[0]` được cộng thêm `4`; với ký tự `b` thì cộng thêm `5` và `4 + 5 = 9 = 4*2 + 1`. Vậy `username` mới sẽ là `bd..................................`. Và với `username` trên, độ dài `serial` sẽ là 8. Vậy ta chọn `serial` bằng `12345678`.  
+
+Tiếp theo, chúng ta xét block lệnh `while`:  
+```c
+while ( *v34 == *v32 )
+      {
+        ++v34;
+        ++v32;
+        v37 = v36 < 4;
+        v36 -= 4;
+        if ( v37 )
+          goto LABEL_54;
+      }
+```  
+
+Khi debug thì ta thấy được rằng `v32` chính là địa chỉ của `serial` và `v34` là địa chỉ của 1 chuỗi hằng nào đó. Đồng thời, `serial` cũng sẽ được so sánh với chuỗi này. Chính vì vậy, ta có thể đoán được rằng, `serial` mà ta cần nhập là chuỗi mà `v34` đang trỏ tới.  
+
+Khi xem stack thì chúng ta thấy được chuỗi mà `v34` trỏ tới như sau:  
+```
+Stack[00003A6C]:012FF828 db  2Dh ; -
+Stack[00003A6C]:012FF829 db  2Eh ; .
+Stack[00003A6C]:012FF82A db  2Eh ; .
+Stack[00003A6C]:012FF82B db  2Eh ; .
+Stack[00003A6C]:012FF82C db  20h
+Stack[00003A6C]:012FF82D db  2Dh ; -
+Stack[00003A6C]:012FF82E db  2Eh ; .
+Stack[00003A6C]:012FF82F db  2Eh ; .
+```  
+
+Ở đây, vì serial của chúng ta có độ dài bằng 8, và chuỗi mà `v34` trỏ tới là chuỗi `-... -..` cũng có độ dài là 8 nên ta sẽ mạnh dạn kiểm tra chuỗi trên.  
+
+### Kiểm tra kết quả
+```
+└─$ ./Keygenme_Part_One.exe
+
+__    __  ________  __      __   ______   ________  __    __  __       __  ________
+|  \  /  \|        \|  \    /  \ /      \ |        \|  \  |  \|  \     /  \|        \
+| $$ /  $$| $$$$$$$$ \$$\  /  $$|  $$$$$$\| $$$$$$$$| $$\ | $$| $$\   /  $$| $$$$$$$$
+| $$/  $$ | $$__      \$$\/  $$ | $$ __\$$| $$__    | $$$\| $$| $$$\ /  $$$| $$__
+| $$  $$  | $$  \      \$$  $$  | $$|    \| $$  \   | $$$$\ $$| $$$$\  $$$$| $$  \
+| $$$$$\  | $$$$$       \$$$$   | $$ \$$$$| $$$$$   | $$\$$ $$| $$\$$ $$ $$| $$$$$
+| $$ \$$\ | $$_____     | $$    | $$__| $$| $$_____ | $$ \$$$$| $$ \$$$| $$| $$_____
+| $$  \$$\| $$     \    | $$     \$$    $$| $$     \| $$  \$$$| $$  \$ | $$| $$     \
+ \$$   \$$ \$$$$$$$$     \$$      \$$$$$$  \$$$$$$$$ \$$   \$$ \$$      \$$ \$$$$$$$$
+_______    ______   _______  ________         ______   __    __  ________
+|       \  /      \ |       \|        \       /      \ |  \  |  \|        \
+| $$$$$$$\|  $$$$$$\| $$$$$$$\\$$$$$$$$      |  $$$$$$\| $$\ | $$| $$$$$$$$
+| $$__/ $$| $$__| $$| $$__| $$  | $$         | $$  | $$| $$$\| $$| $$__
+| $$    $$| $$    $$| $$    $$  | $$         | $$  | $$| $$$$\ $$| $$  \
+| $$$$$$$ | $$$$$$$$| $$$$$$$\  | $$         | $$  | $$| $$\$$ $$| $$$$$
+| $$      | $$  | $$| $$  | $$  | $$         | $$__/ $$| $$ \$$$$| $$_____
+| $$      | $$  | $$| $$  | $$  | $$          \$$    $$| $$  \$$$| $$     \
+ \$$       \$$   \$$ \$$   \$$   \$$           \$$$$$$  \$$   \$$ \$$$$$$$$
+
+Level= 1                 For beginners         Coded By : Sir_Zed
+Rules: 1) No Patching 2) You have to make a keygen and a tutorial. 3) Self Keygen
+If You have any question : radpak333@gmail.com
+Good Luck!
+
+Enter Username (Only Letters and numbers): bd..................................
+Enter Serial : -... -..
+[-]Wow! You're god damn genius!
+[+]Now make a keygen :)
+
+
+
+Press any key to continue . . .
+```
+> Chính xác!
