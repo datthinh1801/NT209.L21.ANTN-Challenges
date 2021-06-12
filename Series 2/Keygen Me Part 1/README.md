@@ -748,4 +748,43 @@ Bên cạnh đó, trong quá trình tính toán `v62[0]`, chương trình sẽ c
 
 Vậy để `Size[0] < 4` thì ta chọn `username` bằng `a...................................`.  
 
+Với `username` như trên thì `v62[0] == 3` và `Size[0] == 2` đúng như dự đoán. Lúc này, sau khi nhập đại `serial` thì chúng ta mắc phải một câu lệnh if:  
+```c
+if ( Size[0] != serial_len )
+      goto LABEL_66;
+```  
 
+Block lệnh này sẽ so sánh `Size[0]` với độ dài của `serial`, nếu khác nhau thì sẽ nhảy tới block lệnh in `[-]Come on man it's too easy !!!\n[+]Try again boy!` ra console và đây là điều chúng ta không muốn. Chính vì vậy, với `username == a...................................`, chúng ta sẽ chọn `serial` bất kỳ với độ dài là 2.  
+
+Lúc này, chúng ta đã vào được block lệnh:  
+```c
+if ( Size[0] < 4 )
+    {
+LABEL_54:
+      if ( v36 == -4 )
+        goto LABEL_63;
+    }
+```  
+
+Tuy nhiên, trước đó, `v36` được gán bằng `Size[0] - 4` và bằng `-2` với `username` và `serial` trên. Và vì vậy block lệnh tiếp theo được thực hiện là:  
+```c
+v37 = *(_BYTE *)v34 < *(_BYTE *)v32;
+    if ( *(_BYTE *)v34 != *(_BYTE *)v32
+      || v36 != -3
+      && ((v38 = *((_BYTE *)v34 + 1), v37 = v38 < *((_BYTE *)v32 + 1), v38 != *((_BYTE *)v32 + 1))
+       || v36 != -2
+       && ((v39 = *((_BYTE *)v34 + 2), v37 = v39 < *((_BYTE *)v32 + 2), v39 != *((_BYTE *)v32 + 2))
+        || v36 != -1 && (v40 = *((_BYTE *)v34 + 3), v37 = v40 < *((_BYTE *)v32 + 3), v40 != *((_BYTE *)v32 + 3)))) )
+    {
+      v41 = v37 ? -1 : 1;
+      goto LABEL_64;
+    }
+```  
+
+Có thể thấy `v41 = v37 ? -1 : 1`, nghĩa là v41 sẽ không bao giờ bằng `0`.
+> Loại hướng giải 1.  
+
+#### Xét hướng giải 2
+Ở hướng giải này, chúng ta cần tìm `username` sao cho `v62[0]` có giá trị bằng `4*k + 1` để `Size[0] = v62[0] - 1 = 4*k`. Khi đó, `v36` mới có khả năng bằng `-4`.  
+
+Ở hướng giải 1, ta biết được là với ký tự `d`, `v62[0]` được cộng thêm `4`; với ký tự `b` thì cộng thêm `5` và `4 + 5 = 9 = 4*2 + 1`. Vậy `username` mới sẽ là `bd..................................`. Và với `username` trên, độ dài `serial` sẽ là 8. Vậy ta chọn `serial` bằng `12345678`.
