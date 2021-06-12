@@ -6,7 +6,7 @@
 | 20m | [Just crackme](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/Just%20crackme) |
 | 20m | [ZED-crackme](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/ZED-Crackme) |
 | 10m | [racecars](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/racecars)|
-| | [Keygen Me Part 1](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/Keygen%20Me%20Part%201) |
+| 2h | [Keygen Me Part 1](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/Keygen%20Me%20Part%201) |
 | 60m | [CrackMe2](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/CrackMe2%20-%20Classical%20cipher) |
 | 30m | [WarGames](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/WarGames) |
 | 30m | [no strings attached](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/no%20strings%20attached) |
