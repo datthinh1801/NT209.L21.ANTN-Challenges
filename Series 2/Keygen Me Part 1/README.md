@@ -736,4 +736,7 @@ LABEL_54:
           goto LABEL_54;
       }
     }
-```
+```  
+
+#### Xét hướng giải 1 (`Size[0] < 4`)
+
