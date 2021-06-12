@@ -711,4 +711,29 @@ LABEL_63:
 LABEL_54:
       if ( v36 == -4 )
         goto LABEL_63;
+```  
+
+Để `LABEL_54` được thực thi thì chúng ta có 2 cách:  
+1. `Size[0] < 4`
+2. `v37` khác `0`  
+
+```c
+if ( Size[0] < 4 )
+    {
+LABEL_54:
+      if ( v36 == -4 )
+        goto LABEL_63;
+    }
+    else
+    {
+      while ( *v34 == *v32 )
+      {
+        ++v34;
+        ++v32;
+        v37 = v36 < 4;
+        v36 -= 4;
+        if ( v37 )
+          goto LABEL_54;
+      }
+    }
 ```
