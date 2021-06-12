@@ -739,4 +739,13 @@ LABEL_54:
 ```  
 
 #### Xét hướng giải 1 (`Size[0] < 4`)
+Trong quá trình debug thì chúng ta thấy rằng `Size[0]` sẽ bằng `v62[0] - 1` và `v62[0]` là giá trị được tính toán từ `username`. Ở đây, `username` sẽ được đổi thành UPPERCASE trước khi trải qua các bước tính toán.  
+> Với ký tự `a` (hoặc `A`) thì `v62[0]` sẽ được cộng thêm `3`.  
+> Với ký tự `b`, `c` (hoặc `B`, `C`) thì `v62[0]` sẽ được cộng thêm `5`.
+> Vân vân. Các giá trị này có lẽ là theo một quy luật nào đó.  
+
+Bên cạnh đó, trong quá trình tính toán `v62[0]`, chương trình sẽ chạy 1 vòng lặp có 36 lần lặp và kiểm tra xem ký tự hiện tại của `username` (sau khi được UPPERCASE) thì có thuộc chuỗi `alphanum_string` hay không (chuỗi này gồm các ký tự in hoa và số `[A..Z][1..9]0`). Nếu có thì sẽ thực hiện việc cộng một giá trị nào đó vào `v62[0]`, nếu không thì sẽ bỏ qua. Nhưng nếu `username` ngắn hơn 36 ký tự thì hành vi của vòng lặp khá bất thường vì `v62[0]` được công thêm các giá trị nằm ngoài dự đoán, nên tốt nhất là chúng ta nhập `username` của độ dài 36 ký tự với các ký tự mà ta mong muốn chèn với các ký tự không phải `alpha numeric`.  
+
+Vậy để `Size[0] < 4` thì ta chọn `username` bằng `a...................................`.  
+
 
