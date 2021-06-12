@@ -783,7 +783,7 @@ v37 = *(_BYTE *)v34 < *(_BYTE *)v32;
     }
 ```  
 
-Có thể thấy `v41 = v37 ? -1 : 1`, nghĩa là v41 sẽ không bao giờ bằng `0`.
+Có thể thấy `v41 = v37 ? -1 : 1`, nghĩa là `v41` sẽ không bao giờ bằng `0`.
 > Loại hướng giải 1.  
 
 #### Xét hướng giải 2
