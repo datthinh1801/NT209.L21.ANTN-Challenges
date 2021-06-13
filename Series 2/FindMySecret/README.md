@@ -191,6 +191,100 @@ int __cdecl success(int a1)
     result = puts("Nope, you have not yet found the secret number.");
   return result;
 }
+```  
+
+Ở điều kiện trên:  
+```c
+if ( calculated_from_time <= (long double)v2 || v2 <= calculated_from_time - 1.0 )
+```  
+
+Vì `calculated_from_time` của chúng ta lúc này là `double` nên sẽ có phần thập phân, vì vậy câu lệnh `if` này muốn chúng ta nhập vào giá trị nguyên của `calculated_from_time`. Vì `calculated_from_time - 1.0 < v2 < calculated_from_time` sẽ tương đương `calculated_from_time - 1.0 < int(v2) < calculated_from_time`.  
+
+Vậy chúng ta chỉ cần tìm được giá trị nguyên này là xong.  
+
+#### Script
+```python
+#! /bin/python3
+from time import time
+from pprint import pprint
+
+results = []
+
+for remainder in range(50):
+    result = remainder / 50
+
+    for _ in range(5):
+        result = 3.8 * result * (1 - result)
+
+    results.append(int(result * 10000))
+
+for index, val in enumerate(results):
+    print(index, val)
+
+t = int(time()) + 1
+print(f"{t} {t % 50} {results[t % 50]}")
+```  
+
+Ở đây, chúng ta sẽ tạo 1 list các giá trị khả thi, vì `timestamp` sẽ được chia lấy dư cho `50` nên phạm vi cũng khá nhỏ. Sau đó, chúng ta sẽ lấy thời gian hiện tại chia cho 50 lấy phần dư, và tìm giá trị tương ứng với phần dư đó.  
+> Ở trong script này, khi mình chạy thử với pipeline `python3 solution.py; ./FindMySecret.exe` thì `solution.py` luôn chạy trước `FindMySecret.exe` 1 giây, nên ta mới có `t = int(time()) + 1`.
+
+### Kiểm tra kết quả
 ```
+└─$ python3 solution.py; ./FindMySecret.exe
+0 0
+1 7297
+2 5837
+3 9217
+4 5509
+5 1915
+6 6058
+7 8983
+8 9335
+9 8418
+10 5283
+11 2104
+12 2797
+13 6746
+14 9415
+15 8481
+16 6202
+17 5782
+18 7547
+19 9289
+20 9153
+21 7266
+22 4966
+23 3313
+24 2511
+25 2297
+26 2511
+27 3313
+28 4966
+29 7266
+30 9153
+31 9289
+32 7547
+33 5782
+34 6202
+35 8481
+36 9415
+37 6746
+38 2797
+39 2104
+40 5283
+41 8418
+42 9335
+43 8983
+44 6058
+45 1915
+46 5509
+47 9217
+48 5837
+49 7297
+1623549739 39 2104
+Enter the secret number2104
+Success! You have completely reverse engineered and found the secret number!
+```
+> Thành công.
 
 
