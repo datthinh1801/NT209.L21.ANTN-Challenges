@@ -25,7 +25,7 @@ Challenge này là challenge có sử dụng thread vì chúng ta có thể dễ
 
 > Đa phần các tên biến và hàm đều đã được đổi tên để dễ theo dõi.  
 
-Ở đây, thread này sẽ thực thi hàm tại địa chỉ `StartAddress` và chứa địa chỉ bắt đầu của 1 hàm nào đó.  
+Ở đây, thread này sẽ thực thi hàm tại địa chỉ `StartAddress` và chứa địa chỉ bắt đầu của 1 hàm nào đó. Bên cạnh đó, việc `ArgList` được truyền vào ô nhớ tại địa chỉ `esp + 8` đồng nghĩ với việc `ArgList` chính là tham số thứ nhất của hàm mà `StartAddress` đang trỏ tới.  
 ```
 .data:00403028 StartAddress    dd offset sub_401626
 ```  
@@ -94,6 +94,20 @@ void __cdecl __noreturn sub_401626(_WORD *a1)
   > ```  
   > Từ [trang này](https://eli.thegreenplace.net/2011/01/27/how-debuggers-work-part-2-breakpoints), ta biết được là `0xCC` sẽ là byte encode cho debug exception handler nên chương trình sẽ tạm dừng và truyền control cho debugger.
   > ![image](https://user-images.githubusercontent.com/44528004/121792345-cec3fa00-cc1d-11eb-847d-847822d54981.png)  
+
+- Khi giá trị truyền vào bằng `2`: chương trình sẽ thực hiện việc tính toán với 1 số lần nhất định.  
+  > Để biết được hàm `mul_time_3_8()` làm gì thông qua pseudocode thì rất khó, do đó chúng ta sẽ xem assembly của đoạn này.  
+  > ![image](https://user-images.githubusercontent.com/44528004/121792438-d46e0f80-cc1e-11eb-84c0-9962853605c3.png)  
+  > ![image](https://user-images.githubusercontent.com/44528004/121792450-fb2c4600-cc1e-11eb-8199-d0b6d1f79c87.png)  
+  > Ở đoạn code này, nếu giá trị truyền vào (`ArgList`) bằng `2` thì chương trình sẽ tiếp tục kiểm tra xem giá trị tại ô nhớ `ebp + ArgList + 2` có bằng `0` hay không. Nếu không thì sẽ thực thi hàm `mul_time_3_8()` sau đó giảm giá trị đó đi `1`.  
+  > 
+  > Khi chúng ta xem lại phần khai báo ở hàm `main` thì thấy được rằng, giá trị tại ô nhớ `ebp + ArgList + 2` chính là hằng số `5` vì hằng số được lưu tại địa chỉ cao hơn `ArgList` 2 bytes.  
+  > ```
+  > ArgList= word ptr -10h
+  > const_5= word ptr -0Eh
+  > ```  
+  > Bên canh đó, sau khi thực thi `thread` thì `const_5` sẽ được gán bằng `5`, và `ArgList` sẽ được gán bằng `2`, vì vậy, số lần lặp của chúng ta khi thực thi hàm `mul_time_3_8()` sẽ là `5`.  
+  > ![image](https://user-images.githubusercontent.com/44528004/121792513-fddb6b00-cc1f-11eb-87e1-923810254d5e.png)
 
 
 
