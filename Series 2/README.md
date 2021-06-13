@@ -10,4 +10,4 @@
 | 60m | [CrackMe2](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/CrackMe2%20-%20Classical%20cipher) |
 | 30m | [WarGames](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/WarGames) |
 | 30m | [no strings attached](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/no%20strings%20attached) |
-| | [FindMySecret](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/FindMySecret)|
+| 190m | [FindMySecret](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%202/FindMySecret)|
