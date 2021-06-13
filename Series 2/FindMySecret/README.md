@@ -19,7 +19,7 @@ FindMySecret.exe: PE32 executable (console) Intel 80386 (stripped to external PD
 
 Mở IDA Pro 32bit.  
 
-Challenge này là challenge có sử dụng thread.  
+Challenge này là challenge có sử dụng thread vì chúng ta có thể dễ dàng nhìn thấy `beginthread` ở hình bên dưới.  
 
 ![image](https://user-images.githubusercontent.com/44528004/121792168-c79bec80-cc1b-11eb-9bc4-d2f864e54153.png)  
 
@@ -74,7 +74,7 @@ void __cdecl __noreturn sub_401626(_WORD *a1)
   > ```
   > .data:00403024 debug_checker   dd offset sub_4015E8
   > ```  
-  > Vì `debug_checker` trỏ tới hàm `sub_4015E8` và theo mình đoán thì hàm này sẽ kiểm tra từng câu lệnh xem câu lệnh đó có đang được debug hay không (nếu có thì sẽ có byte biểu diễn là `0xCC`) cho tới khi gặp câu lệnh `ret` (có byte biểu diễn là `0xC3`).  
+  > Vì `debug_checker` trỏ tới hàm `sub_4015E8` và hàm này sẽ kiểm tra từng câu lệnh xem câu lệnh đó có đang được debug hay không (nếu có thì sẽ có byte biểu diễn là `0xCC`) cho tới khi gặp câu lệnh `ret` (có byte biểu diễn là `0xC3`).  
   > ```c
   > int __cdecl sub_4015E8(int a1)
   > {
