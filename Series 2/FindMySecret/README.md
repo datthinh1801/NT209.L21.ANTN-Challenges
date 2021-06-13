@@ -107,8 +107,90 @@ void __cdecl __noreturn sub_401626(_WORD *a1)
   > const_5= word ptr -0Eh
   > ```  
   > Bên canh đó, sau khi thực thi `thread` thì `const_5` sẽ được gán bằng `5`, và `ArgList` sẽ được gán bằng `2`, vì vậy, số lần lặp của chúng ta khi thực thi hàm `mul_time_3_8()` sẽ là `5`.  
-  > ![image](https://user-images.githubusercontent.com/44528004/121792513-fddb6b00-cc1f-11eb-87e1-923810254d5e.png)
+  > ![image](https://user-images.githubusercontent.com/44528004/121792513-fddb6b00-cc1f-11eb-87e1-923810254d5e.png)  
+  > Hàm `mul_time_3_8()` sẽ thực thi câu lệnh sau:  
+  > ```c
+  > void mul_time_3_8()
+  > {
+  > calculated_from_time = double_3_8 * calculated_from_time * (1.0 - calculated_from_time);
+  > }
+  > ```
 
 
+Quay lại với hàm `main()`.  
+
+![image](https://user-images.githubusercontent.com/44528004/121792527-324f2700-cc20-11eb-8e48-e87a57dce3f2.png)  
+
+Ở block lệnh trước khi gán `const_5` bằng `5` và `ArgList` bằng `2`, chương trình sẽ lấy thời gian hiện tại, chia lấy phần dư cho 50, sau đó chi cho 50 và lấy thương.  
+```c
+int cal_time_mod_50()
+{
+  int result; // eax
+
+  do
+    result = time(0) % 50;
+  while ( 0.0 == (double)((long double)result / 50.0) );
+  calculated_from_time = (long double)result / 50.0;
+  return result;
+}
+```  
+
+Sau đó, giá trị `calculated_from_time` này sẽ được tính lại ngay sau khi `const_5 = 5` và `ArgList = 2` thông qua hàm `mul_time_3_8()`.  
+
+Kế đến chương trình sẽ yêu cầu chúng ta nhập vào 1 con số nếu bằng `0` thì sẽ in ra console `Invalid Range...`. Còn nếu lớn hơn `0` thì sẽ tiếp tục.  
+
+![image](https://user-images.githubusercontent.com/44528004/121792569-fd8f9f80-cc20-11eb-9341-9359fbc1ba71.png)  
+
+Ở block lệnh này, chương trình sẽ gọi hàm `sub_401708()` trước khi gọi hàm `success()`.  
+
+![image](https://user-images.githubusercontent.com/44528004/121792578-17c97d80-cc21-11eb-9ab7-0d9d91fd29f8.png)
+
+Xem mã giả của hàm `sub_401708()`.  
+```c
+__int16 *__cdecl sub_401708(__int16 *a1)
+{
+  __int16 *result; // eax
+  double v2; // [esp+10h] [ebp-8h]
+
+  if ( !byte_406034 )
+  {
+    calculated_from_time = calculated_from_time * 10000.0;
+    byte_406034 = 1;
+  }
+  v2 = (double)*a1;
+  if ( calculated_from_time <= (long double)v2 || v2 <= calculated_from_time - 1.0 )
+  {
+    result = a1;
+    *a1 = 0;
+  }
+  else
+  {
+    result = a1;
+    *a1 = 1;
+  }
+  return result;
+}
+```  
+
+Hàm này sẽ nhân `calculated_time` cho `10000` sau đó kiểm tra các điều kiện.  
+
+Ở hàm `success`.  
+```
+.data:00403038 ref_to_success  dd offset success
+```  
+
+Chương trình sẽ kiểm tra xem `a1` có khác `0` hay không, nếu có thì chúng ta thành công. Vậy mục tiêu là làm cho giá trị `a1` bằng `1` ở hàm `sub_401708()` phía trên.  
+```c
+int __cdecl success(int a1)
+{
+  int result; // eax
+
+  if ( a1 )
+    result = puts("Success! You have completely reverse engineered and found the secret number!");
+  else
+    result = puts("Nope, you have not yet found the secret number.");
+  return result;
+}
+```
 
 
