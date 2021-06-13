@@ -121,7 +121,7 @@ Quay lại với hàm `main()`.
 
 ![image](https://user-images.githubusercontent.com/44528004/121792527-324f2700-cc20-11eb-8e48-e87a57dce3f2.png)  
 
-Ở block lệnh trước khi gán `const_5` bằng `5` và `ArgList` bằng `2`, chương trình sẽ lấy thời gian hiện tại, chia lấy phần dư cho 50, sau đó chi cho 50 và lấy thương.  
+Ở block lệnh trước khi gán `const_5` bằng `5` và `ArgList` bằng `2`, chương trình sẽ lấy thời gian hiện tại, chia lấy phần dư cho 50, sau đó chia cho 50 và lấy thương.  
 ```c
 int cal_time_mod_50()
 {
@@ -198,7 +198,7 @@ int __cdecl success(int a1)
 if ( calculated_from_time <= (long double)v2 || v2 <= calculated_from_time - 1.0 )
 ```  
 
-Vì `calculated_from_time` của chúng ta lúc này là `double` nên sẽ có phần thập phân, vì vậy câu lệnh `if` này muốn chúng ta nhập vào giá trị nguyên của `calculated_from_time`. Vì `calculated_from_time - 1.0 < v2 < calculated_from_time` sẽ tương đương `calculated_from_time - 1.0 < int(v2) < calculated_from_time`.  
+Vì `calculated_from_time` của chúng ta lúc này là giá trị thực kiểu `double` nên sẽ có phần thập phân, vì vậy câu lệnh `if` này muốn chúng ta nhập vào giá trị nguyên của `calculated_from_time`. Vì `calculated_from_time - 1.0 < v2 < calculated_from_time` sẽ tương đương `calculated_from_time - 1.0 < int(v2) < calculated_from_time`.  
 
 Vậy chúng ta chỉ cần tìm được giá trị nguyên này là xong.  
 
@@ -225,7 +225,7 @@ t = int(time()) + 1
 print(f"{t} {t % 50} {results[t % 50]}")
 ```  
 
-Ở đây, chúng ta sẽ tạo 1 list các giá trị khả thi, vì `timestamp` sẽ được chia lấy dư cho `50` nên phạm vi cũng khá nhỏ. Sau đó, chúng ta sẽ lấy thời gian hiện tại chia cho 50 lấy phần dư, và tìm giá trị tương ứng với phần dư đó.  
+Ở đây, chúng ta sẽ tạo 1 list các giá trị khả thi, vì `timestamp` sẽ được chia lấy dư cho `50` nên phạm vi cũng khá nhỏ. Sau đó, chúng ta sẽ lấy thời gian hiện tại chia cho 50 lấy phần dư, và tìm giá trị tương ứng với phần dư đó từ list vừa tạo.  
 > Ở trong script này, khi mình chạy thử với pipeline `python3 solution.py; ./FindMySecret.exe` thì `solution.py` luôn chạy trước `FindMySecret.exe` 1 giây, nên ta mới có `t = int(time()) + 1`.
 
 ### Kiểm tra kết quả
