@@ -102,7 +102,7 @@ Sau quá trình debug, thì chúng ta biết được flow của chương trình
 - Với giá trị shift phải `v5`, một vài bước kiểm tra và tính toán sẽ diễn ra và sau đó, phần tử tại vị trí `v5` của mảng `a` sẽ được gán giá trị bằng `v4`.  
 
 #### Tóm lược các bước kiểm tra và tính toán vừa được đề cập ở trên
-- Với số lần shift phải vừa tìm được, là biến `v5` trong pseudocode, truy suất đến phần tử thứ `v5` của mảng `a` và kiểm tra xem giá trị của phần tử đó có khác 0 hay không. Nếu khác 0 thì sẽ tăng `v7` lên 1 đơn vị, tính lại `v4` bằng `v4 ^ v8` (với `v8` được khởi tạo bằng `0`, ở các lần lặp `i > 0` thì `v8` sẽ bằng giá trị nhập của lần lặp trước. Tiếp theo là gán `v6 = 1` và nhảy đến `LABEL_9`.  
+- Với số lần shift phải vừa tìm được, là biến `v5` trong pseudocode, truy suất đến phần tử thứ `v5` của mảng `a` và kiểm tra xem giá trị của phần tử đó có khác 0 hay không. Nếu khác 0 thì sẽ tăng `v7` lên 1 đơn vị, tính lại `v4` bằng `v4 ^ v8` (với `v8 = a[v5]`). Tiếp theo là gán `v6 = 1` và nhảy đến `LABEL_9`.  
 - Ở `LABEL_9`, nếu số lần shift phải, `v5`, bằng `0`, thì sẽ nhảy đến `LABEL_12` để kiểm tra điều kiện.  
 - Ở `LABEL_12`, nếu lần lặp hiện tại `< 2`, nghĩa là 2 lần lặp đầu tiên, thì chương trình sẽ không in `Try again!` ra màn hình. Nếu `iteration > 1` thì chương trình sẽ kiểm tra biến `v10`. Nếu `v10` khác 0 thì chương trình sẽ in `Try again!` ra màn hình. Và biến `v10` này bằng `0` khi `v7 > 1`.  
 
@@ -135,6 +135,8 @@ Congrats!
 | Vị trí bit `1` cao nhất | `31` |
 | `v5` | `30` |
 | `a[30]` ban đầu | `0` |
+| `v8` | `0` |
+| `v7` | `0` |
 | `a[30]` được gán bằng `v4` | `1073840128` |  
 
 
@@ -146,4 +148,34 @@ Congrats!
 | Vị trí bit `1` cao nhất | `6` |
 | `v5` | `5` |
 | `a[5]` ban đầu | `0` |
+| `v8` | `0` |
+| `v7` | `0` |
 | `a[5]` được gán bằng `v4` | `56` |  
+
+##### Lần lặp 3
+###### Khi `v4 == 1073840184`
+| Biến | Giá trị | Ghi chú |
+|---|---|---|
+| `v4` | `1073840184` | Giá trị nhập |
+| Biểu diễn nhị phân của `v4` | `1000000000000011000000000111000` | |
+| Vị trí bit `1` cao nhất | `31` | |
+| `v5` | `30` | |
+| `a[30]` ban đầu | `1073840128` | `a[30] == 1073840128` vì giá trị này được gán ở lần lặp đầu tiên |
+| `v8` | `1073840128` | `v8 = a[v5] = a[30]` |
+| `v7` | `1` | Vì `a[30] != 0` nên `v8 != 0` nên `v7 += 1` |
+| `v4` sau khi `XOR` | `56` | `v4 = v4 ^ v8 = 1073840184 ^ 1073840128 = 56` |
+| `v6` | `1` |
+
+###### Khi `v4 == 56`
+| Biến | Giá trị | Ghi chú |
+|---|---|---|
+| `v4` | `56` | `v4` sau khi được `XOR` với `v8` |
+| Biểu diễn nhị phân của `v4` | `111000` | |
+| Vị trí bit `1` cao nhất | `6` | |
+| `v5` | `5` | |
+| `a[5]` ban đầu | `56` | `a[5] == 56` vì giá trị này được gán ở lần lặp thứ 2 |
+| `v8` | `56` | `v8 = a[v5] = a[5]` |
+| `v7` | `2` | Vì `a[5] != 0` nên `v8 != 0` nên `v7 += 1` |
+| `v4` sau khi `XOR` | `0` | `v4 = v4 ^ v8 = 56 ^ 56 = 0` |
+| `v6` | `1` |
+
