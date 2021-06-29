@@ -86,5 +86,32 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 }
 ```  
 
-Ở pseudocode trên, ta có thể thấy rằng, chương trình chỉ xét các ký tự alphabet và xét case-insensitive.
+Ở pseudocode trên, ta có thể thấy rằng, chương trình chỉ xét các ký tự alphabet và xét case-insensitive.  
+
+Và điều kiện thành công là frequency phải bằng `01234567890123456789012345`. Nghĩa là, ký tự `a` và `A` xuất hiện `0` lần, ký tự `b` và `B` xuất hiện 1 lần, v.v.  
+
+### Script
+```python
+from string import ascii_lowercase
+
+nums = "01234567890123456789012345"
+nums = list(map(int, nums))
+alpha = list(ascii_lowercase)
+s = ''.join(alpha[i] * nums[i] for i in range(len(nums)))
+print(s)
+```
+
+Chạy script.  
+```
+└─$ python3 solution.py
+bccdddeeeefffffgggggghhhhhhhiiiiiiiijjjjjjjjjlmmnnnoooopppppqqqqqqrrrrrrrsssssssstttttttttvwwxxxyyyyzzzzz
+```
+
+### Kiểm tra kết quả
+```
+└─$ ./ZED-Frequency.bin input.txt
+the generated key is: 01234567890123456789012345
+you succeed!!
+```
+> Thành công!
 
