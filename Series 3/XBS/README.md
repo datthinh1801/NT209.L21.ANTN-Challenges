@@ -184,8 +184,9 @@ Lúc này chương trình sẽ thực thi câu lệnh `goto LABEL_9` và tiếp 
 Lúc này, chương trình sẽ nhảy đến `LABEL_9` và giảm dần `v5`. Khi `v5` bằng `0`, chương trình nhảy đến `LABEL_12` và kiểm tra điều kiện.  
 
 Tại đây, `v10` sẽ bằng `0` vì `v7 == 2` nên `v7 <= 1` sai. Do đó câu lệnh `if (v10 && iteration > 1)` sẽ sai và vòng lặp sẽ tiếp tục mà không in ra màn hình `Try again!`.  
-> Ở các lần lặp 4 và 5 (`iteration == 3` và `iteration == 4`), tất cả các bước và giá trị điều tương tự ở lần lặp 3 (`iteration == 2`). Bên cạnh đó, với các giá trị nhập như trên thì từ lần lặp 3 trở đi, mảng `a` sẽ không được gán thêm các phần từ nào vì ngay sau khi tăng `v7`, chương trình sẽ nhảy đến `LABEL_9` và sau đó là nhảy đến `LABEL_12` mà không thực thi câu lệnh `a[(int)v5] = v4` như ở 2 lần lặp đầu tiên.   
+> Ở các lần lặp 4 và 5 (`iteration == 3` và `iteration == 4`), tất cả các bước và giá trị điều tương tự ở lần lặp 3 (`iteration == 2`). Bên cạnh đó, với các giá trị nhập như trên thì từ lần lặp 3 trở đi, mảng `a` sẽ không được gán thêm các phần tử nào vì ngay sau khi tăng `v7`, chương trình sẽ nhảy đến `LABEL_9` và sau đó là nhảy đến `LABEL_12` mà không thực thi câu lệnh `a[(int)v5] = v4` như ở 2 lần lặp đầu tiên.   
 
 Lúc này, vòng lặp `do ... while (iteration != 5)` sẽ kết thúc.  
 
-Sau đó, chương trình sẽ tính tổng tất cả các giá trị của các phần tử của `a`. Và với các giá trị nhập như trên thì mảng `a` lúc này có `a[5] == 56`,`a[30] == 1073840128` và các vị trí còn lại có giá trị bằng `0`. Do vậy, tổng của các phần tử của mảng `a` bằng `1073840128 + 56 = 1073840184` và thỏa điều kiện để in `Congrats!` ra màn hình.
+Sau đó, chương trình sẽ tính tổng tất cả các giá trị của các phần tử của `a`. Và với các giá trị nhập như trên thì mảng `a` lúc này có `a[5] == 56`,`a[30] == 1073840128` và các vị trí còn lại có giá trị bằng `0`. Do vậy, tổng của các phần tử của mảng `a` bằng `1073840128 + 56 = 1073840184` và thỏa điều kiện để in `Congrats!` ra màn hình.  
+> Việc chọn được các input như trên là do mình thấy được điểm đặc biệt khi biểu diễn `1073840184` thành số thập phân. Bên cạnh đó, `1073840128` và `56` thỏa các phép toán `XOR` đồng thời tổng của chúng cũng bằng `1073840184`.
