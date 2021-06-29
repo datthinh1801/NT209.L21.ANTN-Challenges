@@ -91,7 +91,11 @@ LABEL_19:
   puts(v13);
   return 0;
 }
-```
+```  
+
+Từ đoạn pseudocode trên, để chương trình in ra chuỗi `Congrats!`, `v12` phải bằng `1073840184` để chương trình không nhảy tới `LABEL_18` và in ra chuỗi `Try again!`.  
+
+Bên cạnh đó, để chương trình không nhảy vào `LABEL_18` thì điều kiện `v10 && v3 > 1` phải sai. Nói cách khác, `v10` phải bằng `0` hoặc `v3 <= 1`.
 
 
 
