@@ -109,4 +109,41 @@ Sau quá trình debug, thì chúng ta biết được flow của chương trình
 #### Khi `iteration > 1`
 Khi `iteration > 1`, nếu chương trình đã tìm được số lần shift phải để lấy được bit `1` cao nhất của giá trị nhập `v4`, giá trị `a[v5] == 0` thì chương trình sẽ in ra `Try again!` vì giá trị `v7` không được tăng thêm `1` hai lần.  
 
-Một trường hợp khác là khi `a[v5] != 0`, `v7` được tăng thêm 1 đơn vị và sau đó `v4` được tính lại bằng `v4 ^ v8`. Với giá vị `v4` mới này, chương trình sẽ tiếp tục tìm bit `1` ***cao nhất có thể*** của `v4`. Khi tìm được `v5` thỏa `v4` mới, chương trình sẽ tiếp tục kiểm tra `a[v5] == 5 ?`, lúc này, nếu `a[v5] == 0` thì `v7` cũng chỉ mang giá trị là `1` và chương trình vẫn sẽ in `Try again!` ra màn hình.
+Một trường hợp khác là khi `a[v5] != 0`, `v7` được tăng thêm 1 đơn vị và sau đó `v4` được tính lại bằng `v4 ^ v8`. Với giá vị `v4` mới này, chương trình sẽ tiếp tục tìm bit `1` ***cao nhất có thể*** của `v4`. Khi tìm được `v5` thỏa `v4` mới, chương trình sẽ tiếp tục kiểm tra `a[v5] == 5 ?`, lúc này, nếu `a[v5] == 0` thì `v7` cũng chỉ mang giá trị là `1` và chương trình vẫn sẽ in `Try again!` ra màn hình.  
+
+#### Kết luận
+Ở 2 lần lặp đầu tiên, chúng ta cần nhập 2 số sao cho tổng của chúng bằng `1073840184`. Ở các lần lặp sau, cần nhập một giá trị `x` sao cho số lần shift phải của `x` phải bằng vị trí mà 1 trong 2 giá trị trước đã được gán vào mảng `a`, và `x` `XOR` với giá trị đó phải có kết quả là một con số `y` sao cho số lần shift phải của `y` bằng vị trí của giá trị nhập còn lại.  
+> Đọc có vẻ khó hiểu nên chúng ta sẽ phân tích với giá trị cụ thể.  
+
+#### Giải thích với giá trị cụ thể
+Do mình đã giải được bài này nên mình sẽ dùng các giá trị input hợp lệ để phân tích. Solution là:  
+```
+└─$ ./a.out
+1073840128
+56
+1073840184
+1073840184
+1073840184
+Congrats!
+```  
+
+##### Lần lặp 1
+| Biến | Giá trị |
+|---|---|
+| `v4` | `1073840128` |
+| Biểu diễn nhị phân của `v4` | `1000000000000011000000000000000` |
+| Vị trí bit `1` cao nhất | `31` |
+| `v5` | `30` |
+| `a[30]` ban đầu | `0` |
+| `a[30]` được gán bằng `v4` | `1073840128` |  
+
+
+##### Lần lặp 2
+| Biến | Giá trị |
+|---|---|
+| `v4` | `56` |
+| Biểu diễn nhị phân của `v4` | `111000` |
+| Vị trí bit `1` cao nhất | `6` |
+| `v5` | `5` |
+| `a[5]` ban đầu | `0` |
+| `a[5]` được gán bằng `v4` | `56` |  
