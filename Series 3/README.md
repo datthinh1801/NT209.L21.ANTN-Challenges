@@ -10,5 +10,5 @@
 |  | [firewall](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/firewall) |
 |  | [recursive](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/recursive) |
 |  | [SecureSoftware](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/SecureSoftware) |
-|  | [XBS](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/XBS) |
+| 120m  | [XBS](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/XBS) |
 | 25m | [ZED-frequency](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/ZED-frequency) |
