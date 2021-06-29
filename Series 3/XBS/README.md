@@ -96,10 +96,12 @@ Từ đoạn pseudocode trên, để chương trình in ra chuỗi `Congrats!`, 
 
 Bên cạnh đó, để chương trình không nhảy vào `LABEL_18` thì điều kiện `v10 && iteration > 1` phải sai. Vì là biến vòng lặp nên chúng ta không thể kiểm soát biến `iteration`. Và với điều kiện `iteration > 1` như trên thì chương trình sẽ không bao giờ in ra chuỗi `Try again!` ở 2 lần lặp đầu tiên.   
 
-#### Tóm lược ở các đoạn phía trên
+#### Tóm lược các đoạn pseudocode phía trên đoạn xét điều kiện quyết định
 Sau quá trình debug, thì chúng ta biết được flow của chương trình như sau:  
 - Với đầu vào là `v4`, chương trình sẽ tìm số lần shift phải sao cho lấy được bit `1` cao nhất của `v4`. Ví dụ, `v4 == 2` thì cần shift phải 1 lần để lấy bit `1` cao nhất của số `2`.  
+- Với giá trị shift phải `v5`, một vài bước kiểm tra và tính toán sẽ diễn ra và sau đó, phần tử tại vị trí `v5` của mảng `a` sẽ được gán giá trị bằng `v4`.  
+
+#### Tóm lược các bước kiểm tra và tính toán vừa được đề cập ở trên
 - Với số lần shift phải vừa tìm được, là biến `v5` trong pseudocode, truy suất đến phần tử thứ `v5` của mảng `a` và kiểm tra xem giá trị của phần tử đó có khác 0 hay không. Nếu khác 0 thì sẽ tăng `v7` lên 1 đơn vị, tính lại `v4` bằng `v4 ^ v8` (với `v8` được khởi tạo bằng `0`, ở các lần lặp i > 0 thì `v8` sẽ bằng giá trị nhập của lần lặp trước. Tiếp theo là gán `v6 = 1` và nhảy đến `LABEL_9`.  
 - Ở `LABEL_9`, nếu số lần shift phải, `v5`, bằng `0`, thì sẽ nhảy đến `LABEL_12` để kiểm tra điều kiện.  
 - Ở `LABEL_12`, nếu lần lặp hiện tại `< 2`, nghĩa là 2 lần lặp đầu tiên, thì chương trình sẽ không in `Try again!` ra màn hình. Nếu `iteration > 1` thì chương trình sẽ kiểm tra biến `v10`. Nếu `v10` khác 0 thì chương trình sẽ in `Try again!` ra màn hình. Và biến `v10` này bằng `0` khi `v7 > 1`.  
-- Bên cạnh đó, với giá trị shift phải `v5`, phần tử tại vị trí `v5` của mảng `a` cũng sẽ được gán giá trị bằng `v4`.
