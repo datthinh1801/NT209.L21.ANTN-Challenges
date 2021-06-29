@@ -105,3 +105,8 @@ Sau quá trình debug, thì chúng ta biết được flow của chương trình
 - Với số lần shift phải vừa tìm được, là biến `v5` trong pseudocode, truy suất đến phần tử thứ `v5` của mảng `a` và kiểm tra xem giá trị của phần tử đó có khác 0 hay không. Nếu khác 0 thì sẽ tăng `v7` lên 1 đơn vị, tính lại `v4` bằng `v4 ^ v8` (với `v8` được khởi tạo bằng `0`, ở các lần lặp `i > 0` thì `v8` sẽ bằng giá trị nhập của lần lặp trước. Tiếp theo là gán `v6 = 1` và nhảy đến `LABEL_9`.  
 - Ở `LABEL_9`, nếu số lần shift phải, `v5`, bằng `0`, thì sẽ nhảy đến `LABEL_12` để kiểm tra điều kiện.  
 - Ở `LABEL_12`, nếu lần lặp hiện tại `< 2`, nghĩa là 2 lần lặp đầu tiên, thì chương trình sẽ không in `Try again!` ra màn hình. Nếu `iteration > 1` thì chương trình sẽ kiểm tra biến `v10`. Nếu `v10` khác 0 thì chương trình sẽ in `Try again!` ra màn hình. Và biến `v10` này bằng `0` khi `v7 > 1`.  
+
+#### Khi `iteration > 1`
+Khi `iteration > 1`, nếu chương trình đã tìm được số lần shift phải để lấy được bit `1` cao nhất của giá trị nhập `v4`, giá trị `a[v5] == 0` thì chương trình sẽ in ra `Try again!` vì giá trị `v7` không được tăng thêm `1` hai lần.  
+
+Một trường hợp khác là khi `a[v5] != 0`, `v7` được tăng thêm 1 đơn vị và sau đó `v4` được tính lại bằng `v4 ^ v8`. Với giá vị `v4` mới này, chương trình sẽ tiếp tục tìm bit `1` ***cao nhất có thể*** của `v4`. Khi tìm được `v5` thỏa `v4` mới, chương trình sẽ tiếp tục kiểm tra `a[v5] == 5 ?`, lúc này, nếu `a[v5] == 0` thì `v7` cũng chỉ mang giá trị là `1` và chương trình vẫn sẽ in `Try again!` ra màn hình.
