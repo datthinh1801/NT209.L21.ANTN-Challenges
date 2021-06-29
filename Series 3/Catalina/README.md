@@ -114,5 +114,28 @@ __int64 __fastcall main(int a1, char **a2, char **a3)
   }
   return result;
 }
+```  
+
+Từ đoạn pseudocode trên thì có thể thấy điều kiện ta cần là `v13 == 24`.  
+```c
+if ( v13 == 24 )
+      puts("Congratulations !! you solved the first challenge.");
+```  
+
+Để `v13 == 24` thì `v4 == v5[v7]` 24 lần, với `v4` là một ký tự của một chuỗi *có sẵn* `v8` và `v5` là chuỗi được nhập. Khi đặt breakpoint tại `v13 == 24`, ta kiểm tra giá trị của `v8` thì thấy rằng:  
+
+![image](https://user-images.githubusercontent.com/44528004/123734525-b9122e00-d8c7-11eb-9cc2-8ce0f561210f.png)  
+
+Vậy chuỗi cần nhập là `flag{2020_sana_sa3ida:)}`.  
+
+### Kiểm tra kết quả
 ```
+└─$ ./crackme flag{2020_sana_sa3ida:)}
+-bash: syntax error near unexpected token `)'
+└─$ ./crackme flag{2020_sana_sa3ida:\)}
+Congratulations !! you solved the first challenge.
+```  
+> Thành công!
+
+
 
