@@ -116,7 +116,7 @@ char *__cdecl magic(int a1, int a2)
 }
 ```  
 
-Khi debug thì ta sẽ thấy được rằng, sau các bước biến đổi, `mstring` sẽ có giá trị sau:  
+Khi debug thì ta sẽ thấy được rằng, với `password == aaaaa.aaaa` thì sau các bước biến đổi, `mstring` sẽ có giá trị sau:  
 ![image](https://user-images.githubusercontent.com/44528004/123722471-a2151100-d8b2-11eb-8592-74e6072fd06c.png)  
 
 Vậy ta thử ngay `password_key` bằng chuỗi trên.  
