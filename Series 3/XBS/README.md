@@ -95,7 +95,24 @@ LABEL_19:
 
 Từ đoạn pseudocode trên, để chương trình in ra chuỗi `Congrats!`, `v12` phải bằng `1073840184` để chương trình không nhảy tới `LABEL_18` và in ra chuỗi `Try again!`.  
 
-Bên cạnh đó, để chương trình không nhảy vào `LABEL_18` thì điều kiện `v10 && v3 > 1` phải sai. Nói cách khác, `v10` phải bằng `0` hoặc `v3 <= 1`.
+Bên cạnh đó, để chương trình không nhảy vào `LABEL_18` thì điều kiện `v10 && v3 > 1` phải sai. Nói cách khác, `v10` phải bằng `0` hoặc `v3 <= 1`.  
+
+#### Trường hợp 1: `v10 == 0`
+Để `v10 == 0` thì `v7` phải `> 1`.  
+Để `v7 > 1` thì block lệnh sau phải được thực thi ít nhất 2 lần:  
+```c
+if ( v8 )
+    {
+      ++v7;
+      v4 ^= v8;
+      v6 = 1;
+      goto LABEL_9;
+    }
+```  
+
+Để block lệnh trên được thực thi ít nhất 2 lần thì mảng `a` phải có ít nhất 2 phần tử khác `0`.
+
+
 
 
 
