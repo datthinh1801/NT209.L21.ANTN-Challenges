@@ -21,24 +21,24 @@ Nhảy đến hàm có tham chiếu tới chuỗi chúc mừng và xem pseudocod
 ```c
 int __cdecl main(int argc, const char **argv, const char **envp)
 {
-  int v3; // ebx
+  int iteration; // ebx
   int v4; // eax
   __int64 v5; // rcx
   char v6; // si
   int v7; // edx
   int v8; // er9
   bool v10; // cc
-  char *v11; // rax
+  _DWORD *v11; // rax
   int v12; // edx
   const char *v13; // rdi
   int v15; // [rsp+4h] [rbp-14h] BYREF
   unsigned __int64 v16; // [rsp+8h] [rbp-10h]
 
-  v3 = 0;
+  iteration = 0;
   v16 = __readfsqword(0x28u);
   do
   {
-    __isoc99_scanf(&unk_2004, &v15, envp);
+    __isoc99_scanf(&unk_55D8A6AF0004, &v15, envp);
     v4 = v15;
     v5 = 30LL;
     v6 = 0;
@@ -67,23 +67,20 @@ LABEL_9:
 LABEL_12:
     v10 = v7 <= 1;
     envp = (const char **)(unsigned int)(v7 - 1);
-    if ( v10 && v3 > 1 )
+    if ( v10 && iteration > 1 )
     {
 LABEL_18:
       v13 = "Try again!";
       goto LABEL_19;
     }
-    ++v3;
+    ++iteration;
   }
-  while ( v3 != 5 );
-  v11 = (char *)a;
+  while ( iteration != 5 );
+  v11 = a;
   v12 = 0;
   do
-  {
-    v12 += *(_DWORD *)v11;
-    v11 += 4;
-  }
-  while ( v11 != (char *)&a[31] );
+    v12 += *v11++;
+  while ( v11 != &a[31] );
   v13 = "Congrats!";
   if ( v12 != 1073840184 )
     goto LABEL_18;
@@ -95,25 +92,6 @@ LABEL_19:
 
 Từ đoạn pseudocode trên, để chương trình in ra chuỗi `Congrats!`, `v12` phải bằng `1073840184` để chương trình không nhảy tới `LABEL_18` và in ra chuỗi `Try again!`.  
 
-Bên cạnh đó, để chương trình không nhảy vào `LABEL_18` thì điều kiện `v10 && v3 > 1` phải sai. Nói cách khác, `v10` phải bằng `0` hoặc `v3 <= 1`.  
+Để `v12 == 1073840184` thì tổng của các phần tử trong mảng `a` phải bằng `1073840184`.  
 
-#### Trường hợp 1: `v10 == 0`
-Để `v10 == 0` thì `v7` phải `> 1`.  
-Để `v7 > 1` thì block lệnh sau phải được thực thi ít nhất 2 lần:  
-```c
-if ( v8 )
-    {
-      ++v7;
-      v4 ^= v8;
-      v6 = 1;
-      goto LABEL_9;
-    }
-```  
-
-Để block lệnh trên được thực thi ít nhất 2 lần thì mảng `a` phải có ít nhất 2 phần tử khác `0`.
-
-
-
-
-
-
+Bên cạnh đó, để chương trình không nhảy vào `LABEL_18` thì điều kiện `v10 && iteration > 1` phải sai. Vì là biến vòng lặp nên chúng ta không thể kiểm soát biến `iteration`. Và với điều kiện `iteration > 1` như trên thì chương trình sẽ không bao giờ in ra chuỗi `Try again!` ở 2 lần lặp đầu tiên.   
