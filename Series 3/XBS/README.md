@@ -127,7 +127,7 @@ Do mình đã giải được bài này nên mình sẽ dùng các giá trị in
 Congrats!
 ```  
 
-##### Lần lặp 1
+##### Lần lặp 1 (`iteration == 0`)
 | Biến | Giá trị |
 |---|---|
 | `v4` | `1073840128` |
@@ -140,7 +140,7 @@ Congrats!
 | `a[30]` được gán bằng `v4` | `1073840128` |  
 
 
-##### Lần lặp 2
+##### Lần lặp 2 (`iteration == 1`)
 | Biến | Giá trị |
 |---|---|
 | `v4` | `56` |
@@ -152,7 +152,7 @@ Congrats!
 | `v7` | `0` |
 | `a[5]` được gán bằng `v4` | `56` |  
 
-##### Lần lặp 3
+##### Lần lặp 3 (`iteration == 2`)
 ###### Khi `v4 == 1073840184`
 | Biến | Giá trị | Ghi chú |
 |---|---|---|
@@ -164,7 +164,9 @@ Congrats!
 | `v8` | `1073840128` | `v8 = a[v5] = a[30]` |
 | `v7` | `1` | Vì `a[30] != 0` nên `v8 != 0` nên `v7 += 1` |
 | `v4` sau khi `XOR` | `56` | `v4 = v4 ^ v8 = 1073840184 ^ 1073840128 = 56` |
-| `v6` | `1` |
+| `v6` | `1` |  
+
+Lúc này chương trình sẽ thực thi câu lệnh `goto LABEL_9` và tiếp tục giảm dần `v5` cho đến khi `v5` bằng `0`.  
 
 ###### Khi `v4 == 56`
 | Biến | Giá trị | Ghi chú |
@@ -177,5 +179,13 @@ Congrats!
 | `v8` | `56` | `v8 = a[v5] = a[5]` |
 | `v7` | `2` | Vì `a[5] != 0` nên `v8 != 0` nên `v7 += 1` |
 | `v4` sau khi `XOR` | `0` | `v4 = v4 ^ v8 = 56 ^ 56 = 0` |
-| `v6` | `1` |
+| `v6` | `1` |  
 
+Lúc này, chương trình sẽ nhảy đến `LABEL_9` và giảm dần `v5`. Khi `v5` bằng `0`, chương trình nhảy đến `LABEL_12` và kiểm tra điều kiện.  
+
+Tại đây, `v10` sẽ bằng `0` vì `v7 == 2` nên `v7 <= 1` sai. Do đó câu lệnh `if (v10 && iteration > 1)` sẽ sai và vòng lặp sẽ tiếp tục mà không in ra màn hình `Try again!`.  
+> Ở các lần lặp 4 và 5 (`iteration == 3` và `iteration == 4`), tất cả các bước và giá trị điều tương tự ở lần lặp 3 (`iteration == 2`). Bên cạnh đó, với các giá trị nhập như trên thì từ lần lặp 3 trở đi, mảng `a` sẽ không được gán thêm các phần từ nào vì ngay sau khi tăng `v7`, chương trình sẽ nhảy đến `LABEL_9` và sau đó là nhảy đến `LABEL_12` mà không thực thi câu lệnh `a[(int)v5] = v4` như ở 2 lần lặp đầu tiên.   
+
+Lúc này, vòng lặp `do ... while (iteration != 5)` sẽ kết thúc.  
+
+Sau đó, chương trình sẽ tính tổng tất cả các giá trị của các phần tử của `a`. Và với các giá trị nhập như trên thì mảng `a` lúc này có `a[5] == 56`,`a[30] == 1073840128` và các vị trí còn lại có giá trị bằng `0`. Do vậy, tổng của các phần tử của mảng `a` bằng `1073840128 + 56 = 1073840184` và thỏa điều kiện để in `Congrats!` ra màn hình.
