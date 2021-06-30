@@ -2,7 +2,7 @@
 
 | Solving time | Challenge |
 |---|---|
-|  | [BabyVm](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/BabyVm) |
+| 15m | [BabyVm](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/BabyVm) |
 | 5m | [Catalina](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/Catalina) |
 | 25m | [crackme_by_chrisK_v02](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/crackme_by_chrisK_v02) |
 |  | [Exceptional Password](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/Exceptional%20Password) |
