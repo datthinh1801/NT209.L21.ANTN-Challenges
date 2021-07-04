@@ -10,6 +10,81 @@ Press any key to continue . . .
 > Tìm `password`.  
 
 ## Solution
+Sau một hồi xem pseudocode trên IDA Pro thì thấy rằng, chương trình này có khá nhiều hàm và có vẻ là mỗi hàm sẽ tương ứng với một câu lệnh assembly. Một trong số đó là nhóm lệnh `mov` được chương trình biến đổi như sau:  
+```c
+unsigned __int8 *__thiscall sub_404600(void *this, unsigned __int8 *a2)
+{
+  unsigned __int8 *result; // eax
+  int v3; // [esp+0h] [ebp-30h] BYREF
+  int v4; // [esp+4h] [ebp-2Ch] BYREF
+  int v5; // [esp+8h] [ebp-28h] BYREF
+  int v6; // [esp+Ch] [ebp-24h] BYREF
+  int v7; // [esp+10h] [ebp-20h] BYREF
+  int v8; // [esp+14h] [ebp-1Ch] BYREF
+  int v9; // [esp+18h] [ebp-18h] BYREF
+  int v10; // [esp+1Ch] [ebp-14h] BYREF
+  int v11; // [esp+20h] [ebp-10h]
+  _DWORD *v12; // [esp+24h] [ebp-Ch]
+  unsigned __int8 v13; // [esp+28h] [ebp-8h] BYREF
+  unsigned __int8 v14; // [esp+29h] [ebp-7h] BYREF
+  unsigned __int8 v15; // [esp+2Ah] [ebp-6h] BYREF
+  unsigned __int8 v16; // [esp+2Bh] [ebp-5h] BYREF
+  unsigned __int8 v17; // [esp+2Ch] [ebp-4h] BYREF
+  unsigned __int8 v18; // [esp+2Dh] [ebp-3h] BYREF
+  unsigned __int8 v19; // [esp+2Eh] [ebp-2h] BYREF
+  unsigned __int8 v20; // [esp+2Fh] [ebp-1h] BYREF
+
+  v12 = this;
+  result = a2;
+  v11 = *a2;
+  switch ( v11 )
+  {
+    case 0:
+      v20 = a2[4];
+      result = mov_to_reg(v12, &v20, (_DWORD *)a2 + 2);
+      break;
+    case 1:
+      v19 = a2[8];
+      v10 = get_from_reg(v12, &v19);
+      v18 = a2[4];
+      result = mov_to_reg(v12, &v18, &v10);
+      break;
+    case 2:
+      v3 = get_from_mem(v12, (_DWORD *)a2 + 2);
+      v13 = a2[4];
+      result = mov_to_reg(v12, &v13, &v3);
+      break;
+    case 3:
+      v17 = a2[4];
+      v9 = get_from_reg(v12, &v17);
+      result = (unsigned __int8 *)mov_to_mem(v12, &v9, (_DWORD *)a2 + 2);
+      break;
+    case 4:
+      v16 = a2[8];
+      v8 = get_from_reg(v12, &v16);
+      v7 = get_from_mem(v12, &v8);
+      v15 = a2[4];
+      result = mov_to_reg(v12, &v15, &v7);
+      break;
+    case 5:
+      v6 = a2[4];
+      result = (unsigned __int8 *)mov_to_mem(v12, &v6, (_DWORD *)a2 + 2);
+      break;
+    case 6:
+      v14 = a2[8];
+      v5 = get_from_reg(v12, &v14);
+      v4 = a2[4];
+      result = (unsigned __int8 *)mov_to_mem(v12, &v4, &v5);
+      break;
+    default:
+      return result;
+  }
+  return result;
+}
+```  
+> Tuy nhiên, vì mình khá lười khi phải dịch toàn bộ hàm sang assembly nên mình thử tìm source code của chương trình và có các phát hiện thú vị 😊.  
+
+
 Khi chạy chương trình, ta thấy tên của tác giả `@shockbyte`. Khi tìm tác giả trên github thì ta phát hiện user sau:  
 
 ![image](https://user-images.githubusercontent.com/44528004/123901831-f04f1080-d995-11eb-897c-2b69dd81187a.png)  
