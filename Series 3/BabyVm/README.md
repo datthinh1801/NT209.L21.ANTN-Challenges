@@ -92,7 +92,7 @@ Khi chạy chương trình, ta thấy tên của tác giả `@shockbyte`. Khi t�
 Khi vào xem các repositories của tác giả thì ta thấy repo sau:  
 
 [![image](https://user-images.githubusercontent.com/44528004/123901881-08269480-d996-11eb-8987-9b85220afa70.png)  ](https://github.com/n30np14gu3/VirtualMachine/tree/master/VirtualMachine)
-> Có lẽ đây chính là source code của challenge này ?  
+> (👆 Click vào hình trên để xem repository) Có lẽ đây chính là source code của challenge này ?  
 
 Vào đọc source thôi 😁  
 
