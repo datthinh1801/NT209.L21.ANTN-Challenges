@@ -42,7 +42,7 @@ void VMCore::exec()
 }
 ```
 
-Sau khi xem qua các source code thì ta phát hiện đoạn code sau:  
+Trong source code, ta thấy được hàm `create_program` có lẽ là để khởi tạo các giá trị cho chương trình, thì ta phát hiện:  
 ```c
 		//push password (xored)
 		{OPCODE_PUSH_VAL, ('!' ^ 0xAC), 0},//!
@@ -114,7 +114,7 @@ password->i_4m_t0p_cr4ck3r!
 flag->SHB{p134E3_d0n7_r3v3r53_m3}
 Press any key to continue . . .
 ```
-> Thành công ?
+> Thành công!
 
 
 
