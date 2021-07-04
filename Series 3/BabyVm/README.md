@@ -21,6 +21,27 @@ Khi vào xem các repositories của tác giả thì ta thấy repo sau:
 
 Vào đọc source thôi 😁  
 
+### Phân tích sơ bộ
+Xem sơ qua source code ta thấy rằng, chương trình sẽ đọc file `vm_dump.vm` và các bytes trong file này là biểu diễn của các câu lệnh assembly.  
+
+Sau khi đọc file `vm_dump.vm`, chương trình sẽ duyệt qua từng block bytes, dịch sang câu lệnh tương ứng và thực thi câu lệnh đó.  
+```c
+void VMCore::exec()
+{
+	byte* opcodes = (programSector + sizeof(VM_HEADER));
+	cpu.eip = reinterpret_cast<DWORD>(opcodes);
+	OPCODE* opcode;
+	do
+	{
+		opcode = reinterpret_cast<OPCODE*>(cpu.eip);
+		translate(opcode);
+		cpu.eip += sizeof(OPCODE);
+
+	} while (opcode->command != OPCODE_END);
+
+}
+```
+
 Sau khi xem qua các source code thì ta phát hiện đoạn code sau:  
 ```c
 		//push password (xored)
