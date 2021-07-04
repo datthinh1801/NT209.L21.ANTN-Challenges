@@ -8,7 +8,7 @@
 |  | [Exceptional Password](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/Exceptional%20Password) |
 | 20m | [fence](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/fence) |
 |  | [firewall](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/firewall) |
-|  | [recursive](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/recursive) |
+| 180m | [recursive](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/recursive) |
 |  | [SecureSoftware](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/SecureSoftware) |
 | 120m  | [XBS](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/XBS) |
 | 25m | [ZED-frequency](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%203/ZED-frequency) |
