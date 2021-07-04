@@ -1215,4 +1215,26 @@ LABEL_155:
 }
 ```  
 
+Từ pseudocode trên, ta thấy được rằng, hàm in `SUCCESS!...` ra màn hình sẽ nằm trong block lệnh `if (v6 == 6)`, do đó chúng ta phải làm cho `v6 == 6` trước tiên.  
+
+Để `v6 == 6` thì chương trình sẽ phải chạy qua hết tất cả các `case` từ 1 đến 5 vì ở mỗi case, `v6` sẽ được tăng thêm 1 đơn vị. Từ đó, input sẽ có dạng `stopit`. Vì `_topit` là các case từ 1 đến 5 và ký tự đầu tiên của input được so sánh với `s` trong `LABEL_77` (nằm ngoài `switch ... case ...`).  
+
+Sau khi biết được chuỗi trên, chúng ta thử ngay và tạm thời không quan tâm các đoạn code phía sau.  
+
+### Kiểm tra kết quả
+```
+└─$ ./CRACKME.exe
+PASSWORD: stopit
+```  
+
+Tuy nhiên vẫn không có gì in ra màn hình. Nhưng nếu ta `ls` thì sẽ thấy có một file với tên khá random được tạo ra với nội dung là `SUCCESS!...`.  
+
+```
+└─$ ls
+CRACKME.exe  CRACKME.exe.id0  CRACKME.exe.id1  CRACKME.exe.id2  CRACKME.exe.nam  CRACKME.exe.til  lPRmghWrMKKVY
+└─$ cat lPRmghWrMKKVY
+SUCCESS! tell us how this crackme was solved
+```  
+> Thành công!
+
 
