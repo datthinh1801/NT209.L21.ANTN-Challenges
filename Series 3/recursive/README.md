@@ -748,7 +748,7 @@ v75 = 0;
     sub_34015(v53);
 ```  
 
-Ở đây, mình phát hiện ra có gọi một hàm khác và mình đổi tên thành hàm `true_print()` vì khi xem pseudocode của hàm này, mình thấy có một số chuỗi được gán và so sánh nên mình đoán kết quả cuối cùng sẽ được in ra tại đây.  
+Ở đây, mình phát hiện ra có gọi một hàm khác và mình đổi tên thành hàm `true_print()` vì khi xem pseudocode của hàm này, mình thấy có một số chuỗi được gán và so sánh. Bên cạnh đó, hàm này cũng gọi một hàm khác với đối số truyền vào là chuỗi `SUCCESS! ...`, tuy nhiên tên hàm này vẫn là tên hàm mặc định `sub_32510()`. Điều đó có nghĩa là hàm này khác với hàm `fake_print()`. Vì các lí do trên nên mình đoán kết quả cuối cùng sẽ được in ra tại đây.  
 ```c
 void __cdecl sub_31300(void *Src, int a2, int a3, int a4, unsigned int a5, unsigned int a6)
 {
@@ -1213,4 +1213,6 @@ LABEL_155:
     sub_34015(v59);
   }
 }
-```
+```  
+
+
