@@ -16,7 +16,7 @@ nasm: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, no
 Từ kết quả trên, em mở IDA Pro 64bit để phân tích chương trình.
 
 Đầu tiên, em thử xem IDA có thể show cho chúng ta chuỗi nào khả nghi hay không.  
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/nasm/nasm_secret.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/nasm/nasm_secret.png)  
 
 `supersecret` ? Có vẻ đây là password mà ta cần tìm.  
 
