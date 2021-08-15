@@ -18,7 +18,7 @@ CrackMe_ASM: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), staticall
 Từ kết quả trên, em biết được file này là file 32bit, và em bắt đầu chạy **IDA Pro** phiên bản 32bit để xem hợp ngữ của chương trình.
 
 Trên **IDA**, hợp ngữ của chương trình như sau:  
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/crack_nasm/crach_nasm_ida.png)
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/crack_nasm/crach_nasm_ida.png)
 
 Dễ dàng nhận thấy những ký tự rất *kỳ lạ* kia là `S3CrE+Fl4G!`. Em liền test thử chuỗi này.  
 ```
