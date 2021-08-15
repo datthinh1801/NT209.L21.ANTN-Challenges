@@ -18,7 +18,7 @@ Sau khi mở IDA Pro 64bit, em đọc sơ code assembly thì thấy rằng sử 
 
 Code assembly của block `_start`:  
 
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/hello/hello_start.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/hello/hello_start.png)  
 > Tại thời điểm này, các I/O operations đã hoàn tất.  
 > `name` là `thinh` và `password` là `12345`.
 
@@ -30,7 +30,7 @@ Ngay sau khi nhập xong `password`,
 sẽ thực hiện việc gán độ dài của `password` vừa nhập vào thanh ghi `r15` sau đó `- 1`. Vì khi nhập vào 1 chuỗi, thì chuỗi sẽ chứa thêm 1 ký tự `NULL` (`\0`) ở cuối chuỗi nên độ dài sẽ dài hơn số ký tự thật sự được nhập là 1 ký tự.  
 
 Khi sử dụng `pwndgb`, hầu hết thông tin cần thiết đều được hiển thị một cách đẹp đẽ.  
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/hello/hello_dec_r15.png)
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/hello/hello_dec_r15.png)
 > Hình trên được chụp sau khi chương trình thực thi xong câu lệnh `mov r15,rax`.  
 
 Có thể thấy rằng `r15 = 6` ngay sau khi `mov r15, rax` được thực thi.  
