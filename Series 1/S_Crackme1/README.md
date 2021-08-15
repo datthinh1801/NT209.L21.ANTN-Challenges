@@ -1,13 +1,13 @@
 # S_Crackme1
 ## Task  
 Cửa số đầu tiên của chương trình:  
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/S_Crackme1/s_crackme1_1.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/S_Crackme1/s_crackme1_1.png)  
 
 Khi nhấn vào nút `Check`.  
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/S_Crackme1/s_crackme1_failed.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/S_Crackme1/s_crackme1_failed.png)  
 
 Khi nhấn vào nút `About`.  
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/S_Crackme1/s_crackme1_info.png)
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/S_Crackme1/s_crackme1_info.png)
 
 > Khác với các challenge trước là chúng ta sẽ được prompted để nhập `username` hay `password`, challenge này khá là huyền bí vì ngay từ đầu không thể biết được chương trình này muốn gì.  
 
@@ -21,7 +21,7 @@ KeyMe1.exe: PE32 executable (GUI) Intel 80386, for MS Windows
 
 Mở IDA Pro 32bit và xem pseudocode.  
 
-Trong chương trình này có khá là nhiều hàm, nhưng em đoán là hàm em cần quan tâm là hàm `DialogFunc()` vì ở challenge trước ([crack_001](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/crack_001)), `DiaglogFunc()` cũng là hàm bắt đầu cho các thao tác tính toán và kiểm tra các điều kiện để dẫn đến việc crack thành công hay thất bại.  Do đó, em sẽ bắt đầu xem pseudocode của hàm `DialogFunc()`.  
+Trong chương trình này có khá là nhiều hàm, nhưng em đoán là hàm em cần quan tâm là hàm `DialogFunc()` vì ở challenge trước ([crack_001](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%201/crack_001)), `DiaglogFunc()` cũng là hàm bắt đầu cho các thao tác tính toán và kiểm tra các điều kiện để dẫn đến việc crack thành công hay thất bại.  Do đó, em sẽ bắt đầu xem pseudocode của hàm `DialogFunc()`.  
 
 ```c
 INT_PTR __stdcall DialogFunc(HWND hWnd, UINT a2, WPARAM a3, LPARAM a4)
@@ -188,7 +188,7 @@ Vì `v15` là một biến lặp, nên nó sẽ giảm dần từ `15`, `14`, `1
 
 Sau đó chương trình sẽ kiểm tra xem sau vòng lặp này, giá trị của `dword_403342` có bằng `0` hay không. Nếu có thì in ra cửa sổ 1 chuỗi `Step 1 ok -> now Register it!`.  
 
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/S_Crackme1/s_crackme1_ida_view.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/S_Crackme1/s_crackme1_ida_view.png)  
 
 Vậy ta chọn 15 ký tự để copy sao cho tổng giá trị bằng `1058`. Chuỗi được chọn là `GGGGGGGGFFFFFFF`.  
 
