@@ -1,8 +1,8 @@
 # crack_001
 ## Task
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/crack_001/crack_001.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/crack_001/crack_001.png)  
 
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/crack_001/crack_001_test.png)
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/crack_001/crack_001_test.png)
 > Tìm `NAME` và `PASS` hợp lệ để `register`.  
 
 ## Solution
@@ -128,7 +128,7 @@ Việc tiếp theo mà em làm là debug hàm `DialogFunc()` để xem xem giá 
 
 Khi nhập vào `NAME=abcd` và `PASS=1234`, các giá trị sẽ được lưu ở các ô nhớ sau:  
 
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/crack_001/crack_001_address.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/crack_001/crack_001_address.png)  
 
 Từ đây, ta biết được là `NAME` được bắt đầu lưu tại `403014` và ta cũng thấy được là `PASS` được bắt đầu lưu tại `40301A` với tên biến là `String`.  
 
@@ -214,4 +214,4 @@ Giá trị `dword_403039` và `v0` sẽ tăng 1. Nếu `v3 == NAME_len` nghĩa l
 Vậy nếu `NAME=abc` thì `PASS` phải là `bacbdc`.
 
 ## Kiểm tra kết quả
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/crack_001/crack_001_success.png)
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/crack_001/crack_001_success.png)
