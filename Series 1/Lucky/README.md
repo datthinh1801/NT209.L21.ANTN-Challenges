@@ -22,7 +22,7 @@ lucky_nb: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically l
 ```
 
 Mở IDA Pro 32bit.  
-![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Lucky/lucky_ida.png)  
+![](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/blob/main/Series%201/Lucky/lucky_ida.png)  
 
 Có thể thấy từ các câu lệnh setup cho lệnh write, chương trình sẽ đọc 2 ký tự từ người dùng.  
 ```
