@@ -2,7 +2,7 @@
 
 | solving time | challenge |
 |------|-----|
-| 2m |[nasm](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%201/Es%20crack)|
+| 2m |[nasm](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%201/nasm)|
 | 2m |[crack_nasm](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%201/crack_nasm)|
 | 5m |[es crack](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%201/Es%20crack)| 
 | 1h |[lucky](https://github.com/datthinh1801/NT209.L21.ANTN-Challenges/tree/main/Series%201/Lucky)|
