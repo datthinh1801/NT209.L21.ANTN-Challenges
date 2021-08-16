@@ -72,9 +72,9 @@ Một lưu ý nho nhỏ là chữ số thứ 2 này, sau khi được trừ `0x3
 Vậy chữ số thứ 2 là `8`.  
 Từ đó chúng ta tính chữ số thứ nhất `daa((so1 - 0x30) + 0x8) = 0x16`. Theo hướng dẫn [này](https://www.tutorialspoint.com/daa-instruction-in-8085-microprocessor), thì giá trị `so1` cần tìm là `8` vì
 ```
-daa((0x38 - 0x30) + 0x8) = daa(0x8 + 0x8) = daa(0xf)
+daa((0x38 - 0x30) + 0x8) = daa(0x8 + 0x8) = daa(0x10)
 ```
-Mà `0xf = 16` và lớn hơn `10` nên kết quả cuối cùng sẽ bằng `0xf + 0x6 = 0x16`.
+Mà `0x10 = 16` và lớn hơn `10` nên kết quả cuối cùng sẽ bằng `0x10 + 0x6 = 0x16`.
 
 > Vậy giá trị cần tìm là 88.
 
